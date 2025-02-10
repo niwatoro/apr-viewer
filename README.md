@@ -47,8 +47,8 @@ A modern web application built with Next.js that aggregates and displays real-ti
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/apr-viewer-nextjs.git
-cd apr-viewer-nextjs
+git clone https://github.com/niwatoro/apr-viewer.git
+cd apr-viewer
 ```
 
 2. Install dependencies:
