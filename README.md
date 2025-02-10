@@ -1,37 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DeFi Interest Rate Viewer
+
+A modern web application built with Next.js that aggregates and displays real-time interest rates from major DeFi protocols across multiple blockchain networks.
+
+## Features
+
+- Real-time interest rate data from multiple DeFi protocols:
+  - Aave
+  - Compound
+  - Sky
+  - Yearn Finance
+- Support for multiple blockchain networks:
+  - Ethereum
+  - Optimism
+  - BNB Chain
+  - Gnosis
+  - Polygon
+  - Fantom
+  - Mantle
+  - Base
+  - Avalanche
+  - Arbitrum
+  - Scroll
+- Interactive table with sorting capabilities
+- Focus on stablecoin yields for better comparison
+- TVL (Total Value Locked) tracking
+- Clean and responsive UI built with Tailwind CSS
+
+## Technologies
+
+- [Next.js 14](https://nextjs.org/) - React framework for production
+- [TypeScript](https://www.typescriptlang.org/) - Type safety and better developer experience
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components
+- [ethers.js](https://docs.ethers.org/) - Ethereum library for blockchain interaction
+- [Aave Protocol JS](https://github.com/aave/aave-js) - Utilities for Aave protocol calculations
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- pnpm (recommended) or npm
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/apr-viewer-nextjs.git
+cd apr-viewer-nextjs
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run the development server:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Reference
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### GET /api/interest-rates
 
-## Deploy on Vercel
+Returns an array of interest rates from various DeFi protocols.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Response Format
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# apr-viewer
+```typescript
+interface InterestRate {
+  platform: string;      // DeFi platform name (e.g., "Aave", "Compound")
+  symbol: string;        // Token symbol (e.g., "USDC", "DAI")
+  rewardSymbol: string;  // Reward token symbol
+  chainName: string;     // Blockchain network name
+  tokenAddress: string;  // Token contract address
+  tvl: number;          // Total Value Locked in USD
+  apy: number;          // Annual Percentage Yield
+}
+```
+
+## Development
+
+The project uses Next.js App Router and follows the latest React best practices:
+
+- `src/app/page.tsx` - Main page component with the interest rate table
+- `src/app/api/interest-rates/route.ts` - API route for fetching interest rates
+- `src/types/` - TypeScript type definitions
+- `src/components/` - Reusable UI components
+- `src/lib/` - Utility functions
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
