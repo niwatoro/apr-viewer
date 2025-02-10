@@ -82,17 +82,27 @@ export default function Home() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {sortedRates.map((rate, index) => (
-            <TableRow key={index}>
-              <TableCell>{rate.platform}</TableCell>
-              <TableCell>
-                <a href={rate.tokenAddress}>{rate.symbol}</a>
-              </TableCell>
-              <TableCell>{rate.chainName}</TableCell>
-              <TableCell className={"text-right"}>{formatNumber(rate.tvl)}</TableCell>
-              <TableCell className={"text-right"}>{(rate.apy || 0).toFixed(2)}%</TableCell>
+          {isLoading ? (
+            <TableRow>
+              <TableCell colSpan={5}>Loading...</TableCell>
             </TableRow>
-          ))}
+          ) : error ? (
+            <TableRow>
+              <TableCell colSpan={5}>{error}</TableCell>
+            </TableRow>
+          ) : (
+            sortedRates.map((rate, index) => (
+              <TableRow key={index}>
+                <TableCell>{rate.platform}</TableCell>
+                <TableCell>
+                  <a href={rate.tokenAddress}>{rate.symbol}</a>
+                </TableCell>
+                <TableCell>{rate.chainName}</TableCell>
+                <TableCell className={"text-right"}>{formatNumber(rate.tvl)}</TableCell>
+                <TableCell className={"text-right"}>{(rate.apy || 0).toFixed(2)}%</TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
     </div>

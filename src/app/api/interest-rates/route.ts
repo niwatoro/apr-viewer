@@ -1,3 +1,4 @@
+import { AaveReserve, CompoundRewards, YearnVault } from "@/types/api-response";
 import { ETH_DECIMALS, normalize, RAY, RAY_DECIMALS, rayPow, SECONDS_PER_YEAR, valueToZDBigNumber } from "@aave/protocol-js";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
@@ -62,10 +63,10 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
         const poolDataProvider = new ethers.Contract(poolDataProviderAddress, ["function getAllReservesTokens() external view returns (tuple(string symbol, address tokenAddress)[])", "function getReserveData(address asset) external view returns (uint256 unbacked, uint256 accruedToTreasuryScaled, uint256 totalAToken, uint256 totalStableDebt, uint256 totalVariableDebt, uint256 liquidityRate, uint256 variableBorrowRate, uint256 stableBorrowRate, uint256 averageStableBorrowRate, uint256 liquidityIndex, uint256 variableBorrowIndex, uint40 lastUpdateTimestamp)"], provider);
 
         const reserves = await poolDataProvider.getAllReservesTokens();
-        const stableReserves = reserves.filter((reserve: any) => STABLE_COIN_SYMBOLS.includes(reserve.symbol));
+        const stableReserves = reserves.filter((reserve: AaveReserve) => STABLE_COIN_SYMBOLS.includes(reserve.symbol));
 
         const reserveData = await Promise.all(
-          stableReserves.map(async (reserve: any) => {
+          stableReserves.map(async (reserve: AaveReserve) => {
             const data = await poolDataProvider.getReserveData(reserve.tokenAddress);
             return {
               platform: "Aave",
@@ -93,14 +94,15 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
 const fetchCompoundYields = async (): Promise<InterestRate[]> => {
   try {
     const response = await fetch("https://v3-api.compound.finance/market/all-networks/all-contracts/rewards/dapp-data");
-    const data = await response.json();
+    const data = (await response.json()) as CompoundRewards[];
     return data
-      .filter(({ base_asset }: any) => STABLE_COIN_SYMBOLS.includes(base_asset.symbol))
-      .map(({ chain_id, base_asset, reward_asset, earn_rewards_apr }: any) => ({
+      .filter(({ base_asset }) => STABLE_COIN_SYMBOLS.includes(base_asset.symbol))
+      .map(({ chain_id, base_asset, reward_asset, earn_rewards_apr }) => ({
         platform: "Compound",
         symbol: base_asset.symbol,
         rewardSymbol: reward_asset.symbol,
         chainName: CHAINS.find((chain) => chain.id === chain_id)?.name ?? `Chain ID: ${chain_id}`,
+        tokenAddress: base_asset.address,
         tvl: 0,
         apy: Number.parseFloat(earn_rewards_apr) * 100,
       }));
@@ -137,9 +139,9 @@ const fetchYearnYields = async (): Promise<InterestRate[]> => {
   try {
     const response = await fetch("https://ydaemon.yearn.fi/vaults?hideAlways=true&strategiesCondition=inQueue&limit=2500");
     const data = await response.json();
-    return data
-      .filter(({ token }: any) => STABLE_COIN_SYMBOLS.includes(token.symbol))
-      .map(({ chainID, token, tvl, apr }: any) => ({
+    return (data as YearnVault[])
+      .filter(({ token }) => STABLE_COIN_SYMBOLS.includes(token.symbol))
+      .map(({ chainID, token, tvl, apr }) => ({
         platform: "Yearn",
         symbol: token.symbol,
         rewardSymbol: token.symbol,
@@ -148,7 +150,7 @@ const fetchYearnYields = async (): Promise<InterestRate[]> => {
         tvl: tvl.tvl,
         apy: (apr.netAPR || apr.forwardAPR.netAPR) * (1 - apr.fees.performance - apr.fees.management) * 100,
       }))
-      .filter(({ tvl }: any) => tvl > 0);
+      .filter(({ tvl }) => tvl > 0);
   } catch (e) {
     console.error("Error fetching Yearn data:", e);
     return [];
@@ -157,7 +159,7 @@ const fetchYearnYields = async (): Promise<InterestRate[]> => {
 
 // Implement other yield fetching functions here...
 
-export const GET = async (request: NextRequest) => {
+export const GET = async (_: NextRequest) => {
   try {
     const [aave, compound, sky, yearn] = await Promise.all([
       fetchAaveYields(),

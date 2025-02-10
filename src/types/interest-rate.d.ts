@@ -1,4 +1,4 @@
-export interface InterestRate {
+export type InterestRate = {
   platform: string;
   symbol: string;
   rewardSymbol: string;
@@ -6,4 +6,4 @@ export interface InterestRate {
   tokenAddress: string;
   tvl: number;
   apy: number;
-}
+};
