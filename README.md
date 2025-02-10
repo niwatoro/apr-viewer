@@ -39,7 +39,7 @@ A modern web application built with Next.js that aggregates and displays real-ti
 
 ### Prerequisites
 
-- Node.js 18.17 or later
+- Node.js 22.13.1 or later
 - pnpm (recommended) or npm
 
 ### Installation
