@@ -159,7 +159,8 @@ const fetchYearnYields = async (): Promise<InterestRate[]> => {
 
 // Implement other yield fetching functions here...
 
-export const GET = async (_: NextRequest) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const GET = async (request: NextRequest) => {
   try {
     const [aave, compound, sky, yearn] = await Promise.all([
       fetchAaveYields(),
