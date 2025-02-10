@@ -123,6 +123,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
       symbol,
       rewardSymbol: symbol,
       chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
+      tokenAddress: "",
       tvl: 0,
       apy: Number.parseFloat(data[0].sky_savings_rate_apy) * 100,
     }));
