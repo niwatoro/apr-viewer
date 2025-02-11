@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { getExplorerContractUrl, getExplorerTokenUrl } from "@/lib/explorer";
 import { formatNumber } from "@/lib/utils";
 import { ArrowUpDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -55,18 +56,13 @@ export default function Home() {
         <TableHeader>
           <TableRow>
             <TableHead>
-              <Button variant="ghost" onClick={() => handleSort("platform")}>
-                Platform <ArrowUpDown className="ml-2 h-4 w-4" />
-              </Button>
-            </TableHead>
-            <TableHead>
               <Button variant="ghost" onClick={() => handleSort("symbol")}>
                 Symbol <ArrowUpDown className="ml-2 h-4 w-4" />
               </Button>
             </TableHead>
             <TableHead>
-              <Button variant="ghost" onClick={() => handleSort("chainName")}>
-                Chain <ArrowUpDown className="ml-2 h-4 w-4" />
+              <Button variant="ghost" onClick={() => handleSort("platform")}>
+                Platform <ArrowUpDown className="ml-2 h-4 w-4" />
               </Button>
             </TableHead>
             <TableHead>
@@ -77,6 +73,11 @@ export default function Home() {
             <TableHead>
               <Button variant="ghost" onClick={() => handleSort("apy")}>
                 APY (%) <ArrowUpDown className="ml-2 h-4 w-4" />
+              </Button>
+            </TableHead>
+            <TableHead>
+              <Button variant="ghost" onClick={() => handleSort("chainName")}>
+                Chain <ArrowUpDown className="ml-2 h-4 w-4" />
               </Button>
             </TableHead>
           </TableRow>
@@ -93,13 +94,19 @@ export default function Home() {
           ) : (
             sortedRates.map((rate, index) => (
               <TableRow key={index}>
-                <TableCell>{rate.platform}</TableCell>
                 <TableCell>
-                  <a href={rate.tokenAddress}>{rate.symbol}</a>
+                  <a href={getExplorerTokenUrl(rate.chainId, rate.tokenAddress)!} target={"_blank"} className={"hover:underline cursor-pointer text-blue-600"}>
+                    {rate.symbol}
+                  </a>
                 </TableCell>
-                <TableCell>{rate.chainName}</TableCell>
+                <TableCell>{rate.platform}</TableCell>
                 <TableCell className={"text-right"}>{formatNumber(rate.tvl)}</TableCell>
                 <TableCell className={"text-right"}>{(rate.apy || 0).toFixed(2)}%</TableCell>
+                <TableCell>
+                  <a href={!!rate.contractAddress ? getExplorerContractUrl(rate.chainId, rate.contractAddress)! : undefined} target={"_blank"} className={!!rate.contractAddress ? "hover:underline cursor-pointer text-blue-600" : undefined}>
+                    {rate.chainName}
+                  </a>
+                </TableCell>
               </TableRow>
             ))
           )}

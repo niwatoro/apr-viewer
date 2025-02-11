@@ -27,7 +27,7 @@ const RPC_ENDPOINTS: { [key: number]: string } = {
   56: "https://rpc.ankr.com/bsc",
   100: "https://rpc.ankr.com/gnosis",
   137: "https://rpc.ankr.com/polygon",
-  250: "https://rpc.ankr.com/fantom",
+  250: "https://endpoints.omniatech.io/v1/fantom/mainnet/public",
   5000: "https://mantle-rpc.publicnode.com",
   8453: "https://rpc.ankr.com/base",
   43114: "https://rpc.ankr.com/avalanche",
@@ -73,7 +73,9 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
               symbol: reserve.symbol,
               rewardSymbol: reserve.symbol,
               chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
+              chainId,
               tokenAddress: reserve.tokenAddress,
+              contractAddress: poolDataProviderAddress,
               tvl: reserve.symbol === "EURS" ? (data.totalAToken.toNumber() - data.totalVariableDebt.toNumber()) / 100 : Number.parseFloat(normalize(valueToZDBigNumber(data.totalAToken.toString()).minus(valueToZDBigNumber(data.totalVariableDebt.toString())), chainId != 56 && ["USDT", "USDC", "PYUSD"].includes(reserve.symbol) ? 6 : ETH_DECIMALS)) || 0,
               apy: Number.parseFloat(normalize(rayPow(valueToZDBigNumber(data.liquidityRate.toString()).dividedBy(SECONDS_PER_YEAR).plus(RAY), SECONDS_PER_YEAR).minus(RAY), RAY_DECIMALS)) * 100,
             };
@@ -102,6 +104,7 @@ const fetchCompoundYields = async (): Promise<InterestRate[]> => {
         symbol: base_asset.symbol,
         rewardSymbol: reward_asset.symbol,
         chainName: CHAINS.find((chain) => chain.id === chain_id)?.name ?? `Chain ID: ${chain_id}`,
+        chainId: chain_id,
         tokenAddress: base_asset.address,
         tvl: 0,
         apy: Number.parseFloat(earn_rewards_apr) * 100,
@@ -125,6 +128,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
       symbol,
       rewardSymbol: symbol,
       chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
+      chainId,
       tokenAddress: "",
       tvl: 0,
       apy: Number.parseFloat(data[0].sky_savings_rate_apy) * 100,
@@ -141,12 +145,14 @@ const fetchYearnYields = async (): Promise<InterestRate[]> => {
     const data = await response.json();
     return (data as YearnVault[])
       .filter(({ token }) => STABLE_COIN_SYMBOLS.includes(token.symbol))
-      .map(({ chainID, token, tvl, apr }) => ({
+      .map(({ address, chainID, token, tvl, apr }) => ({
         platform: "Yearn",
         symbol: token.symbol,
         rewardSymbol: token.symbol,
         chainName: CHAINS.find((chain) => chain.id === chainID)?.name ?? `Chain ID: ${chainID}`,
+        chainId: chainID,
         tokenAddress: token.address,
+        contractAddress: address,
         tvl: tvl.tvl,
         apy: (apr.netAPR || apr.forwardAPR.netAPR) * (1 - apr.fees.performance - apr.fees.management) * 100,
       }))
