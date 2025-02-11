@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink } from "@/components/external-link";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getExplorerContractUrl, getExplorerTokenUrl } from "@/lib/explorer";
@@ -95,17 +96,15 @@ export default function Home() {
             sortedRates.map((rate, index) => (
               <TableRow key={index}>
                 <TableCell>
-                  <a href={getExplorerTokenUrl(rate.chainId, rate.tokenAddress)!} target={"_blank"} className={"hover:underline cursor-pointer text-blue-600"}>
-                    {rate.symbol}
-                  </a>
+                  <ExternalLink href={getExplorerTokenUrl(rate.chainId, rate.tokenAddress)!}>{rate.symbol}</ExternalLink>
                 </TableCell>
-                <TableCell>{rate.platform}</TableCell>
+                <TableCell>
+                  <ExternalLink href={rate.platformUrl}>{rate.platform}</ExternalLink>
+                </TableCell>
                 <TableCell className={"text-right"}>{formatNumber(rate.tvl)}</TableCell>
                 <TableCell className={"text-right"}>{(rate.apy || 0).toFixed(2)}%</TableCell>
                 <TableCell>
-                  <a href={!!rate.contractAddress ? getExplorerContractUrl(rate.chainId, rate.contractAddress)! : undefined} target={"_blank"} className={!!rate.contractAddress ? "hover:underline cursor-pointer text-blue-600" : undefined}>
-                    {rate.chainName}
-                  </a>
+                  <ExternalLink href={!!rate.contractAddress ? getExplorerContractUrl(rate.chainId, rate.contractAddress)! : undefined}>{rate.chainName}</ExternalLink>
                 </TableCell>
               </TableRow>
             ))

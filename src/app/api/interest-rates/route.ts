@@ -70,6 +70,7 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
             const data = await poolDataProvider.getReserveData(reserve.tokenAddress);
             return {
               platform: "Aave",
+              platformUrl: "https://app.aave.com/",
               symbol: reserve.symbol,
               rewardSymbol: reserve.symbol,
               chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
@@ -101,6 +102,7 @@ const fetchCompoundYields = async (): Promise<InterestRate[]> => {
       .filter(({ base_asset }) => STABLE_COIN_SYMBOLS.includes(base_asset.symbol))
       .map(({ chain_id, base_asset, reward_asset, earn_rewards_apr }) => ({
         platform: "Compound",
+        platformUrl: "https://app.compound.finance/",
         symbol: base_asset.symbol,
         rewardSymbol: reward_asset.symbol,
         chainName: CHAINS.find((chain) => chain.id === chain_id)?.name ?? `Chain ID: ${chain_id}`,
@@ -125,6 +127,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
       { chainId: 8453, symbol: "USDC" },
     ].map(({ chainId, symbol }) => ({
       platform: "Sky",
+      platformUrl: "https://app.sky.money/",
       symbol,
       rewardSymbol: symbol,
       chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
