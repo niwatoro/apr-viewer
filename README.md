@@ -8,7 +8,6 @@ A modern web application built with Next.js that aggregates and displays real-ti
   - Aave
   - Compound
   - Sky
-  - Yearn Finance
 - Support for multiple blockchain networks:
   - Ethereum
   - Optimism
@@ -28,7 +27,7 @@ A modern web application built with Next.js that aggregates and displays real-ti
 
 ## Technologies
 
-- [Next.js 14](https://nextjs.org/) - React framework for production
+- [Next.js 15](https://nextjs.org/) - React framework for production
 - [TypeScript](https://www.typescriptlang.org/) - Type safety and better developer experience
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [shadcn/ui](https://ui.shadcn.com/) - Re-usable components
@@ -74,12 +73,15 @@ Returns an array of interest rates from various DeFi protocols.
 #### Response Format
 
 ```typescript
-interface InterestRate {
+type InterestRate = {
   platform: string;      // DeFi platform name (e.g., "Aave", "Compound")
+  platformUrl?: string;  // URL to the platform's website
   symbol: string;        // Token symbol (e.g., "USDC", "DAI")
   rewardSymbol: string;  // Reward token symbol
   chainName: string;     // Blockchain network name
+  chainId: number;       // Blockchain network ID
   tokenAddress: string;  // Token contract address
+  contractAddress?: string;  // Reward contract address
   tvl: number;          // Total Value Locked in USD
   apy: number;          // Annual Percentage Yield
 }
