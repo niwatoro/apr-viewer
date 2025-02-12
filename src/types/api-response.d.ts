@@ -114,3 +114,34 @@ export type YearnVault = {
     riskScore: number[];
   };
 };
+
+export type SkyOverall = [
+  {
+    sky_savings_rate_apy: string;
+    sky_savings_rate_tvl: string;
+    sky_farm_apy: string;
+    total_reward_tvl: string;
+    sky_ecosystem_tvl: string;
+    sky_ecosystem_wallet_count: number;
+    ssr_depositor_count: number;
+    total_save: string;
+  },
+  {
+    weth_price_usd: string;
+  },
+  {
+    usdc_price_usd: string;
+  },
+  {
+    usdt_price_usd: string;
+  },
+  {
+    sky_price_usd: string;
+  },
+  {
+    usds_price_usd: string;
+  },
+  {
+    susds_price_usd: string;
+  }
+];

@@ -1,4 +1,4 @@
-import { AaveReserve, CompoundRewards, YearnVault } from "@/types/api-response";
+import { AaveReserve, CompoundRewards, SkyOverall, YearnVault } from "@/types/api-response";
 import { ETH_DECIMALS, normalize, RAY, RAY_DECIMALS, rayPow, SECONDS_PER_YEAR, valueToZDBigNumber } from "@aave/protocol-js";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
@@ -120,7 +120,7 @@ const fetchCompoundYields = async (): Promise<InterestRate[]> => {
 const fetchSkyYields = async (): Promise<InterestRate[]> => {
   try {
     const response = await fetch("https://info-sky.blockanalitica.com/api/v1/overall/?format=json");
-    const data = await response.json();
+    const data = (await response.json()) as SkyOverall;
     return [
       { chainId: 1, symbol: "USDS" },
       { chainId: 8453, symbol: "USDS" },
@@ -133,7 +133,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
       chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
       chainId,
       tokenAddress: "",
-      tvl: 0,
+      tvl: Number.parseFloat(data[0].sky_savings_rate_tvl),
       apy: Number.parseFloat(data[0].sky_savings_rate_apy) * 100,
     }));
   } catch (e) {
@@ -142,6 +142,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const fetchYearnYields = async (): Promise<InterestRate[]> => {
   try {
     const response = await fetch("https://ydaemon.yearn.fi/vaults?hideAlways=true&strategiesCondition=inQueue&limit=2500");
