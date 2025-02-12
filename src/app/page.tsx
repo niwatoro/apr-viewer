@@ -36,6 +36,8 @@ export default function Home() {
   }, []);
 
   const sortedRates = [...interestRates].sort((a, b) => {
+    if (!a[sortColumn]) return 1;
+    if (!b[sortColumn]) return -1;
     if (a[sortColumn] < b[sortColumn]) return sortDirection === "asc" ? -1 : 1;
     if (a[sortColumn] > b[sortColumn]) return sortDirection === "asc" ? 1 : -1;
     return 0;
