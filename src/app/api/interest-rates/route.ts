@@ -1,52 +1,12 @@
-import { AaveReserve, CompoundRewards, SkyOverall, YearnVault } from "@/types/api-response";
+import CompoundJson from "@/lib/abi/compound.json";
+import { AAVE_POOL_ADDRESSES, CHAINS, COMPOUND_CONTRACT_ADDRESSES, RPC_ENDPOINTS, STABLE_COIN_SYMBOLS } from "@/lib/constants";
+import { parseBigNumberWithDecimals } from "@/lib/utils";
+import { AaveReserve, SkyOverall, YearnVault } from "@/types/api-response";
 import { ETH_DECIMALS, normalize, RAY, RAY_DECIMALS, rayPow, SECONDS_PER_YEAR, valueToZDBigNumber } from "@aave/protocol-js";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
 import "reflect-metadata";
 import type { InterestRate } from "../../../types/interest-rate";
-
-const STABLE_COIN_SYMBOLS = ["USDT", "USDC", "DAI", "TUSD", "BUSD", "FDUSD", "USDe", "EURS", "USDP", "PYUSD", "FRAX", "USDD", "XAUt", "PAXG", "GUSD", "LUSD", "USDX", "USDS", "sUSD", "cUSD", "OUSD", "RLUSD", "USDG", "sDAI", "crvUSD", "sUSDe"];
-
-const CHAINS = [
-  { id: 1, name: "Ethereum" },
-  { id: 10, name: "Optimism" },
-  { id: 56, name: "BNB Chain" },
-  { id: 100, name: "Gnosis" },
-  { id: 137, name: "Polygon" },
-  { id: 250, name: "Fantom" },
-  { id: 5000, name: "Mantle" },
-  { id: 8453, name: "Base" },
-  { id: 43114, name: "Avalanche" },
-  { id: 42161, name: "Arbitrum" },
-  { id: 534352, name: "Scroll" },
-];
-
-const RPC_ENDPOINTS: { [key: number]: string } = {
-  1: "https://rpc.ankr.com/eth",
-  10: "https://rpc.ankr.com/optimism",
-  56: "https://rpc.ankr.com/bsc",
-  100: "https://rpc.ankr.com/gnosis",
-  137: "https://rpc.ankr.com/polygon",
-  250: "https://endpoints.omniatech.io/v1/fantom/mainnet/public",
-  5000: "https://mantle-rpc.publicnode.com",
-  8453: "https://rpc.ankr.com/base",
-  43114: "https://rpc.ankr.com/avalanche",
-  42161: "https://rpc.ankr.com/arbitrum",
-  534352: "https://rpc.ankr.com/scroll",
-};
-
-const AAVE_POOL_ADDRESSES: { [key: number]: string } = {
-  1: "0x2f39d218133afab8f2b819b1066c7e434ad94e9e",
-  10: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-  56: "0xff75b6da14ffbbfd355daf7a2731456b3562ba6d",
-  100: "0x36616cf17557639614c1cddb356b1b83fc0b2132",
-  137: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-  250: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-  8453: "0xe20fcbdbffc4dd138ce8b2e6fbb6cb49777ad64d",
-  43114: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-  42161: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-  534352: "0x69850d0b276776781c063771b161bd8894bcdd04",
-};
 
 const fetchAaveYields = async (): Promise<InterestRate[]> => {
   const results = await Promise.all(
@@ -96,21 +56,39 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
 
 const fetchCompoundYields = async (): Promise<InterestRate[]> => {
   try {
-    const response = await fetch("https://v3-api.compound.finance/market/all-networks/all-contracts/rewards/dapp-data");
-    const data = (await response.json()) as CompoundRewards[];
-    return data
-      .filter(({ base_asset }) => STABLE_COIN_SYMBOLS.includes(base_asset.symbol))
-      .map(({ chain_id, base_asset, reward_asset, earn_rewards_apr }) => ({
-        platform: "Compound",
-        platformUrl: "https://app.compound.finance/",
-        symbol: base_asset.symbol,
-        rewardSymbol: reward_asset.symbol,
-        chainName: CHAINS.find((chain) => chain.id === chain_id)?.name ?? `Chain ID: ${chain_id}`,
-        chainId: chain_id,
-        tokenAddress: base_asset.address,
-        tvl: 0,
-        apy: Number.parseFloat(earn_rewards_apr) * 100,
-      }));
+    return (
+      await Promise.all(
+        Object.entries(COMPOUND_CONTRACT_ADDRESSES).map(async (arg) => {
+          const [chainId, compoundRewards] = arg;
+          const provider = new ethers.providers.JsonRpcProvider({
+            skipFetchSetup: true,
+            url: RPC_ENDPOINTS[Number(chainId)],
+          });
+
+          return await Promise.all(
+            Object.entries(compoundRewards).map(async (arg) => {
+              const [symbol, contractAddress] = arg;
+              const contract = new ethers.Contract(contractAddress, JSON.stringify(CompoundJson), provider);
+              const [totalSupply, totalBorrow, baseTokenPriceFeed, decimals, utilization, baseToken] = await Promise.all([contract.totalSupply(), contract.totalBorrow(), contract.baseTokenPriceFeed(), contract.decimals(), contract.getUtilization(), contract.baseToken()]);
+              const [price, supplyRate] = await Promise.all([contract.getPrice(baseTokenPriceFeed), contract.getSupplyRate(utilization)]);
+
+              return {
+                platform: "Compound III",
+                platformUrl: "https://app.compound.finance/",
+                symbol,
+                rewardSymbol: symbol,
+                chainName: CHAINS.find((chain) => chain.id === Number(chainId))?.name ?? `Chain ID: ${chainId}`,
+                chainId: Number(chainId),
+                contractAddress,
+                tokenAddress: baseToken,
+                tvl: (parseBigNumberWithDecimals(totalSupply, decimals) - parseBigNumberWithDecimals(totalBorrow, decimals)) * parseBigNumberWithDecimals(price, decimals),
+                apy: Number.parseFloat(normalize(valueToZDBigNumber(supplyRate.toString()).times(SECONDS_PER_YEAR), 18)) * 100,
+              };
+            })
+          );
+        })
+      )
+    ).flatMap((x) => x);
   } catch (e) {
     console.error("Error fetching Compound data:", e);
     return [];
