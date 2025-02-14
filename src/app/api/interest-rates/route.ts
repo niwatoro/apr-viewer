@@ -1,7 +1,9 @@
+import AaveJson from "@/lib/abi/aave.json";
 import CompoundJson from "@/lib/abi/compound.json";
+import UsdsVaultJson from "@/lib/abi/usds-vault.json";
 import { AAVE_POOL_ADDRESSES, CHAINS, COMPOUND_CONTRACT_ADDRESSES, RPC_ENDPOINTS, STABLE_COIN_SYMBOLS } from "@/lib/constants";
 import { parseBigNumberWithDecimals } from "@/lib/utils";
-import { AaveReserve, SkyOverall, YearnVault } from "@/types/api-response";
+import { AaveReserve, YearnVault } from "@/types/api-response";
 import { ETH_DECIMALS, normalize, RAY, RAY_DECIMALS, rayPow, SECONDS_PER_YEAR, valueToZDBigNumber } from "@aave/protocol-js";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
@@ -20,7 +22,7 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
         const addressesProvider = new ethers.Contract(providerAddress, ["function getPoolDataProvider() external view returns (address)"], provider);
 
         const poolDataProviderAddress = await addressesProvider.getPoolDataProvider();
-        const poolDataProvider = new ethers.Contract(poolDataProviderAddress, ["function getAllReservesTokens() external view returns (tuple(string symbol, address tokenAddress)[])", "function getReserveData(address asset) external view returns (uint256 unbacked, uint256 accruedToTreasuryScaled, uint256 totalAToken, uint256 totalStableDebt, uint256 totalVariableDebt, uint256 liquidityRate, uint256 variableBorrowRate, uint256 stableBorrowRate, uint256 averageStableBorrowRate, uint256 liquidityIndex, uint256 variableBorrowIndex, uint40 lastUpdateTimestamp)"], provider);
+        const poolDataProvider = new ethers.Contract(poolDataProviderAddress, JSON.stringify(AaveJson), provider);
 
         const reserves = await poolDataProvider.getAllReservesTokens();
         const stableReserves = reserves.filter((reserve: AaveReserve) => STABLE_COIN_SYMBOLS.includes(reserve.symbol));
@@ -97,23 +99,30 @@ const fetchCompoundYields = async (): Promise<InterestRate[]> => {
 
 const fetchSkyYields = async (): Promise<InterestRate[]> => {
   try {
-    const response = await fetch("https://info-sky.blockanalitica.com/api/v1/overall/?format=json");
-    const data = (await response.json()) as SkyOverall;
+    const chainId = 1;
+    const contractAddress = "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD";
+
+    const provider = new ethers.providers.JsonRpcProvider({
+      skipFetchSetup: true,
+      url: RPC_ENDPOINTS[chainId],
+    });
+    const contract = new ethers.Contract(contractAddress, JSON.stringify(UsdsVaultJson), provider);
+    const [asset, decimals, ssr, symbol, totalAssets] = await Promise.all([contract.asset(), contract.decimals(), contract.ssr(), contract.symbol(), contract.totalAssets()]);
+
     return [
-      { chainId: 1, symbol: "USDS" },
-      { chainId: 8453, symbol: "USDS" },
-      { chainId: 8453, symbol: "USDC" },
-    ].map(({ chainId, symbol }) => ({
-      platform: "Sky",
-      platformUrl: "https://app.sky.money/",
-      symbol,
-      rewardSymbol: symbol,
-      chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
-      chainId,
-      tokenAddress: "",
-      tvl: Number.parseFloat(data[0].sky_savings_rate_tvl),
-      apy: Number.parseFloat(data[0].sky_savings_rate_apy) * 100,
-    }));
+      {
+        platform: "Sky",
+        platformUrl: "https://app.sky.money/",
+        symbol,
+        rewardSymbol: symbol,
+        chainName: CHAINS.find((chain) => chain.id === chainId)?.name ?? `Chain ID: ${chainId}`,
+        chainId,
+        tokenAddress: asset,
+        contractAddress,
+        tvl: parseBigNumberWithDecimals(totalAssets, decimals),
+        apy: Number.parseFloat(normalize(rayPow(valueToZDBigNumber(ssr.toString()), SECONDS_PER_YEAR).minus(RAY), RAY_DECIMALS)) * 100,
+      },
+    ];
   } catch (e) {
     console.error("Error fetching Sky data:", e);
     return [];
@@ -144,8 +153,6 @@ const fetchYearnYields = async (): Promise<InterestRate[]> => {
     return [];
   }
 };
-
-// Implement other yield fetching functions here...
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const GET = async (request: NextRequest) => {
