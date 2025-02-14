@@ -1,9 +1,9 @@
 import AaveJson from "@/lib/abi/aave.json";
 import CompoundJson from "@/lib/abi/compound.json";
 import UsdsVaultJson from "@/lib/abi/usds-vault.json";
-import { AAVE_POOL_ADDRESSES, CHAINS, COMPOUND_CONTRACT_ADDRESSES, RPC_ENDPOINTS, STABLE_COIN_SYMBOLS } from "@/lib/constants";
+import { AAVE_POOL_ADDRESSES, CHAINS, COMPOUND_CONTRACT_ADDRESSES, RPC_ENDPOINTS, SKY_CONTRACT_ADDRESSES, STABLE_COIN_SYMBOLS } from "@/lib/constants";
 import { parseBigNumberWithDecimals } from "@/lib/utils";
-import { AaveReserve, YearnVault } from "@/types/api-response";
+import { AaveReserve } from "@/types/api-response";
 import { ETH_DECIMALS, normalize, RAY, RAY_DECIMALS, rayPow, SECONDS_PER_YEAR, valueToZDBigNumber } from "@aave/protocol-js";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
@@ -100,7 +100,7 @@ const fetchCompoundYields = async (): Promise<InterestRate[]> => {
 const fetchSkyYields = async (): Promise<InterestRate[]> => {
   try {
     const chainId = 1;
-    const contractAddress = "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD";
+    const contractAddress = SKY_CONTRACT_ADDRESSES[chainId];
 
     const provider = new ethers.providers.JsonRpcProvider({
       skipFetchSetup: true,
@@ -125,31 +125,6 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
     ];
   } catch (e) {
     console.error("Error fetching Sky data:", e);
-    return [];
-  }
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const fetchYearnYields = async (): Promise<InterestRate[]> => {
-  try {
-    const response = await fetch("https://ydaemon.yearn.fi/vaults?hideAlways=true&strategiesCondition=inQueue&limit=2500");
-    const data = await response.json();
-    return (data as YearnVault[])
-      .filter(({ token }) => STABLE_COIN_SYMBOLS.includes(token.symbol))
-      .map(({ address, chainID, token, tvl, apr }) => ({
-        platform: "Yearn",
-        symbol: token.symbol,
-        rewardSymbol: token.symbol,
-        chainName: CHAINS.find((chain) => chain.id === chainID)?.name ?? `Chain ID: ${chainID}`,
-        chainId: chainID,
-        tokenAddress: token.address,
-        contractAddress: address,
-        tvl: tvl.tvl,
-        apy: (apr.netAPR || apr.forwardAPR.netAPR) * (1 - apr.fees.performance - apr.fees.management) * 100,
-      }))
-      .filter(({ tvl }) => tvl > 0);
-  } catch (e) {
-    console.error("Error fetching Yearn data:", e);
     return [];
   }
 };

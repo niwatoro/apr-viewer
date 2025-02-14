@@ -71,3 +71,7 @@ export const COMPOUND_CONTRACT_ADDRESSES: { [chainId: number]: { [tokenSymbol: s
     USDe: "0x606174f62cd968d8e684c645080fa694c1D7786E",
   },
 };
+
+export const SKY_CONTRACT_ADDRESSES: { [chainId: number]: string } = {
+  1: "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+};
