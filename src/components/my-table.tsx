@@ -57,6 +57,10 @@ export const MyTable = ({ isLoading, error, headers, data, initialSortColumn, di
           <TableRow>
             <TableCell colSpan={headers.length}>{error}</TableCell>
           </TableRow>
+        ) : sortedData.length === 0 ? (
+          <TableRow>
+            <TableCell colSpan={headers.length}>No data</TableCell>
+          </TableRow>
         ) : (
           sortedData.map((row, index) => <TableRow key={index}>{displayRow(row)}</TableRow>)
         )}
