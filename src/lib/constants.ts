@@ -1,4 +1,4 @@
-export const STABLE_COIN_SYMBOLS = ["USDT", "USDC", "DAI", "TUSD", "BUSD", "FDUSD", "USDe", "EURS", "USDP", "PYUSD", "FRAX", "USDD", "XAUt", "PAXG", "GUSD", "LUSD", "USDX", "USDS", "sUSD", "cUSD", "OUSD", "RLUSD", "USDG", "sDAI", "crvUSD", "sUSDe", "USDC.e"];
+export const STABLE_COIN_SYMBOLS = ["USDT", "USDC", "DAI", "TUSD", "BUSD", "FDUSD", "USDe", "EURS", "USDP", "PYUSD", "FRAX", "USDD", "XAUt", "PAXG", "GUSD", "LUSD", "USDX", "USDS", "sUSD", "cUSD", "OUSD", "RLUSD", "USDG", "sDAI", "crvUSD", "sUSDe", "USDC.e", "USR"];
 
 export const CHAINS = [
   { id: 1, name: "Ethereum" },

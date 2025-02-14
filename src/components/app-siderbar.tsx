@@ -1,4 +1,4 @@
-import { Home, Landmark } from "lucide-react";
+import { ChartCandlestick, Home, Landmark } from "lucide-react";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
 
 const items = [
@@ -11,6 +11,11 @@ const items = [
     title: "Stablecoin Yields",
     href: "/stablecoin-yields",
     icon: Landmark,
+  },
+  {
+    title: "Arbitrage Paths",
+    href: "/arbitrage-paths",
+    icon: ChartCandlestick,
   },
 ];
 
