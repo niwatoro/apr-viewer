@@ -132,12 +132,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const GET = async (request: NextRequest) => {
   try {
-    const [aave, compound, sky] = await Promise.all([
-      fetchAaveYields(),
-      fetchCompoundYields(),
-      fetchSkyYields(),
-      // Add other yield fetching functions here
-    ]);
+    const [aave, compound, sky] = await Promise.all([fetchAaveYields(), fetchCompoundYields(), fetchSkyYields()]);
 
     const allRates = [...aave, ...compound, ...sky];
     return NextResponse.json(allRates, { status: 200 });

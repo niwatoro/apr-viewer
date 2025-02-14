@@ -1,4 +1,6 @@
+import { AppSidebar } from "@/components/app-siderbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -27,7 +29,12 @@ export default function RootLayout({
     <html lang={"en"} suppressHydrationWarning={true}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute={"class"} defaultTheme={"dark"} enableSystem={true} disableTransitionOnChange={true}>
-          {children}
+          <SidebarProvider className={"flex gap-6"}>
+            <AppSidebar />
+            <main className={"w-full flex justify-center"}>
+              <div className={"max-w-2xl w-full"}>{children}</div>
+            </main>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
