@@ -9,4 +9,5 @@ export type InterestRate = {
   contractAddress?: string;
   tvl: number;
   apy: number;
+  verified?: boolean;
 };

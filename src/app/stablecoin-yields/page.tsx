@@ -7,6 +7,7 @@ import { TableCell } from "@/components/ui/table";
 import { getExplorerContractUrl, getExplorerTokenUrl } from "@/lib/explorer";
 import { formatNumber } from "@/lib/utils";
 import type { InterestRate } from "@/types/interest-rate";
+import { BadgeCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -65,8 +66,11 @@ export default function Home() {
         initialSortColumn={"apy"}
         displayRow={(rate) => (
           <>
-            <TableCell>
-              <ExternalLink href={getExplorerTokenUrl(rate.chainId, rate.tokenAddress)!}>{rate.symbol}</ExternalLink>
+            <TableCell className={"flex items-center gap-1"}>
+              <ExternalLink href={getExplorerTokenUrl(rate.chainId, rate.tokenAddress)!}>
+                <span>{rate.symbol}</span>
+              </ExternalLink>
+              {rate.verified && <BadgeCheck className={"w-3 h-3 text-blue-400 black:text-blue-600"} />}
             </TableCell>
             <TableCell>
               <ExternalLink href={rate.platformUrl}>{rate.platform}</ExternalLink>
