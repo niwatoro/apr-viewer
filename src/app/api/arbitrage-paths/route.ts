@@ -1,4 +1,4 @@
-import { fetchDexPrices } from "@/lib/api/fetchPrices";
+import { fetchDexPrices } from "@/lib/api/fetch-prices";
 import { ArbitragePath } from "@/types/arbitrage-path";
 import { DexPrice } from "@/types/dex-price";
 import { NextRequest, NextResponse } from "next/server";
@@ -175,7 +175,6 @@ const calculateArbitragePaths = (prices: DexPrice[]): ArbitragePath[] => {
 export const GET = async (request: NextRequest) => {
   try {
     const dexPrices = await fetchDexPrices();
-    console.log("Fetched DEX prices.");
     const arbitragePaths = calculateArbitragePaths(dexPrices);
     return NextResponse.json(arbitragePaths);
   } catch (error) {

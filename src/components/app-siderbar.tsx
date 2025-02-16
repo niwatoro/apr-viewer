@@ -14,14 +14,14 @@ const items = [
     icon: Landmark,
   },
   {
-    title: "Arbitrage Paths",
-    href: "/arbitrage-paths",
-    icon: HandCoins,
-  },
-  {
     title: "DEX Prices",
     href: "/dex-prices",
     icon: ChartCandlestick,
+  },
+  {
+    title: "Arbitrage Paths",
+    href: "/arbitrage-paths",
+    icon: HandCoins,
   },
 ];
 

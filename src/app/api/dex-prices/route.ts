@@ -1,4 +1,4 @@
-import { fetchDexPrices } from "@/lib/api/fetchPrices";
+import { fetchDexPrices } from "@/lib/api/fetch-prices";
 import { NextRequest, NextResponse } from "next/server";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
