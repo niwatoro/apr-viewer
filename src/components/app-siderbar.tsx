@@ -1,4 +1,5 @@
 import { ChartCandlestick, HandCoins, Home, Landmark } from "lucide-react";
+import NextLink from "next/link";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
 
 const items = [
@@ -35,10 +36,10 @@ export const AppSidebar = () => {
               {items.map((item) => (
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton asChild={true}>
-                    <a href={item.href}>
+                    <NextLink href={item.href}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </NextLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

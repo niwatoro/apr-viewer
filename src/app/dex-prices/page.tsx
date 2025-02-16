@@ -58,7 +58,7 @@ export default function Home() {
           },
           {
             sortColumn: "fee",
-            title: "Fee (1/100 bp)",
+            title: "Fee (100th of bp)",
           },
         ]}
         data={dexPrices.map((price) => ({

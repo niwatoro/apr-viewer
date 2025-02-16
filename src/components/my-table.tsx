@@ -7,12 +7,16 @@ type Props = {
   isLoading: boolean;
   error: string | null;
   headers: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sortColumn: any;
     title: string;
   }[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialSortColumn: any;
   initialSortDirection?: "asc" | "desc";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   displayRow: (row: any) => ReactNode;
 };
 export const MyTable = ({ isLoading, error, headers, data, initialSortColumn, initialSortDirection = "desc", displayRow }: Props) => {

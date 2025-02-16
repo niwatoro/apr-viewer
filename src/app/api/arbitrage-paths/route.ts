@@ -4,6 +4,9 @@ import { DexPrice } from "@/types/dex-price";
 import { NextRequest, NextResponse } from "next/server";
 import "reflect-metadata";
 
+// Calculate the fee multiplier for a given fee in 1/100 bp.
+const feeMultiplier = (fee: number): number => 1 - fee * 1e-6;
+
 const calculateTwoTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
   const arbitragePaths: ArbitragePath[] = [];
 
@@ -57,13 +60,17 @@ const calculateTwoTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
       }
     });
 
-    // Calculate the price difference and determine profit percentage.
-    // profit percentage formula: (difference / average price) * 100
-    const priceDifference = maxPrice.price - minPrice.price;
-    const profit = (priceDifference / (maxPrice.price + minPrice.price)) * 100;
+    // For a two-token arbitrage, assume starting with quote tokens:
+    // 1. Buy base tokens at the lower price (adjusted for fee).
+    // 2. Sell base tokens at the higher price (adjusted for fee).
+    // The effective conversion factors become:
+    const effectiveBuy = feeMultiplier(minPrice.fee) / minPrice.price;
+    const effectiveSell = feeMultiplier(maxPrice.fee) * maxPrice.price;
+    const multiplier = effectiveBuy * effectiveSell;
+    const profit = (multiplier - 1) * 100; // Profit percentage
 
-    // A threshold can be used to filter out low profit opportunities (0% in this case).
-    const threshold = 0;
+    // A threshold can be used to filter out low profit opportunities (1% in this case).
+    const threshold = 1;
     if (profit > threshold) {
       arbitragePaths.push({
         type: "Two Token",
@@ -134,13 +141,14 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
             const priceBC = edgeBC.price;
             const priceCA = edgeCA.price;
 
-            // Incorporate fees on each leg of the swap
-            const effectiveRate = priceAB * priceBC * priceCA;
+            // Adjust each leg's conversion for fees
+            const effectiveAB = priceAB * feeMultiplier(edgeAB.fee);
+            const effectiveBC = priceBC * feeMultiplier(edgeBC.fee);
+            const effectiveCA = priceCA * feeMultiplier(edgeCA.fee);
+            const effectiveRate = effectiveAB * effectiveBC * effectiveCA;
 
             const profit = (effectiveRate - 1) * 100; // Profit percentage
-
-            // Only record profitable cycles
-            const threshold = 0; // 0% threshold for arbitrage opportunity
+            const threshold = 1; // 1% threshold for arbitrage opportunity
             if (profit > threshold) {
               arbitragePaths.push({
                 type: "Three Token",
