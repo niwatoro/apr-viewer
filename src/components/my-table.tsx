@@ -12,11 +12,12 @@ type Props = {
   }[];
   data: any[];
   initialSortColumn: any;
+  initialSortDirection?: "asc" | "desc";
   displayRow: (row: any) => ReactNode;
 };
-export const MyTable = ({ isLoading, error, headers, data, initialSortColumn, displayRow }: Props) => {
+export const MyTable = ({ isLoading, error, headers, data, initialSortColumn, initialSortDirection = "desc", displayRow }: Props) => {
   const [sortColumn, setSortColumn] = useState<keyof typeof data>(initialSortColumn);
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">(initialSortDirection);
 
   const sortedData = [...data].sort((a, b) => {
     if (!a[sortColumn]) return 1;

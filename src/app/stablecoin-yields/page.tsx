@@ -50,16 +50,16 @@ export default function Home() {
             title: "Platform",
           },
           {
+            sortColumn: "chainName",
+            title: "Chain",
+          },
+          {
             sortColumn: "tvl",
             title: "TVL ($)",
           },
           {
             sortColumn: "apy",
             title: "APY (%)",
-          },
-          {
-            sortColumn: "chainName",
-            title: "Chain",
           },
         ]}
         data={interestRates}
@@ -73,13 +73,11 @@ export default function Home() {
               {rate.verified && <BadgeCheck className={"w-3 h-3 text-blue-400 black:text-blue-600"} />}
             </TableCell>
             <TableCell>
-              <ExternalLink href={rate.platformUrl}>{rate.platform}</ExternalLink>
+              <ExternalLink href={!!rate.contractAddress ? getExplorerContractUrl(rate.chainId, rate.contractAddress)! : undefined}>{rate.platform}</ExternalLink>
             </TableCell>
+            <TableCell>{rate.chainName}</TableCell>
             <TableCell className={"text-right"}>{formatNumber(rate.tvl)}</TableCell>
             <TableCell className={"text-right"}>{(rate.apy || 0).toFixed(2)}%</TableCell>
-            <TableCell>
-              <ExternalLink href={!!rate.contractAddress ? getExplorerContractUrl(rate.chainId, rate.contractAddress)! : undefined}>{rate.chainName}</ExternalLink>
-            </TableCell>
           </>
         )}
       />

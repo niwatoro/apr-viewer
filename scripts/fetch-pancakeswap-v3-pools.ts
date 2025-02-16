@@ -44,7 +44,7 @@ import { BigNumber } from "ethers";
             continue;
           }
 
-          if (token0 === firstToken[1]) {
+          if (token0.toLowerCase() === firstToken[1].address.toLowerCase()) {
             addresses[chainId].push({
               token0Symbol: firstToken[0],
               token0Address: firstToken[1].address,
@@ -53,7 +53,7 @@ import { BigNumber } from "ethers";
               poolAddress: address,
               fee,
             });
-          } else {
+          } else if (token0.toLowerCase() === lastToken[1].address.toLowerCase()) {
             addresses[chainId].push({
               token0Symbol: lastToken[0],
               token0Address: lastToken[1].address,
@@ -62,13 +62,13 @@ import { BigNumber } from "ethers";
               poolAddress: address,
               fee,
             });
+          } else {
+            throw new Error("Invalid pool token0");
           }
 
           console.log(`Found pool for ${firstToken[0]}-${lastToken[0]}: ${address}`);
         } catch (e) {
           console.error("Error fetching Pancakeswap V3 pool address:", e);
-        } finally {
-          new Promise((resolve) => setTimeout(resolve, 100));
         }
       }
     }

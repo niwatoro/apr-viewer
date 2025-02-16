@@ -1,113 +1,8 @@
-import PancakeSwapAbi from "@/lib/abi/pancakeswap/pool.json";
-import UniswapPoolAbi from "@/lib/abi/uniswap/pool.json";
-import { RPC_ENDPOINTS, TRADABLE_TOKENS } from "@/lib/constants";
-import PancakeSwapV3Pools from "@/lib/pools/pancakeswap-v3-pools.json";
-import UniswapV3Pools from "@/lib/pools/uniswap-v3-pools.json";
+import { fetchDexPrices } from "@/lib/api/fetchPrices";
 import { ArbitragePath } from "@/types/arbitrage-path";
-import Big from "big.js";
-import { ethers } from "ethers";
+import { DexPrice } from "@/types/dex-price";
 import { NextRequest, NextResponse } from "next/server";
 import "reflect-metadata";
-
-const providers = Object.fromEntries(Object.entries(RPC_ENDPOINTS).map(([chainId, url]) => [Number(chainId), new ethers.providers.JsonRpcProvider({ skipFetchSetup: true, url })]));
-
-type DexPrice = {
-  dex: string;
-  baseSymbol: string;
-  quoteSymbol: string;
-  baseToken: string;
-  quoteToken: string;
-  price: number;
-  fee: number;
-};
-
-const fetchUniswapV3Prices = async (): Promise<DexPrice[]> => {
-  const results = await Promise.allSettled(
-    Object.entries(UniswapV3Pools).map(async ([chainIdStr, pools]) => {
-      const chainId = Number.parseInt(chainIdStr);
-      const provider = providers[chainId];
-
-      const prices = [];
-      for (const { token0Symbol, token0Address, token1Symbol, token1Address, poolAddress, fee } of pools) {
-        try {
-          const pool = new ethers.Contract(poolAddress, JSON.stringify(UniswapPoolAbi), provider);
-          const slot0 = await pool.slot0();
-          const sqrtPriceX96 = slot0.sqrtPriceX96;
-          const Q96 = new Big(2).pow(96);
-          let decimalAdjustment;
-          if (token0Symbol === "WETH" && token1Symbol === "USDC") {
-            decimalAdjustment = new Big(10).pow(-5);
-          } else {
-            decimalAdjustment = new Big(10).pow(TRADABLE_TOKENS[chainId][token0Symbol].decimals - TRADABLE_TOKENS[chainId][token1Symbol].decimals);
-          }
-
-          prices.push({
-            dex: "Uniswap V3",
-            baseSymbol: token0Symbol,
-            quoteSymbol: token1Symbol,
-            baseToken: token0Address,
-            quoteToken: token1Address,
-            price: Number.parseFloat(new Big(sqrtPriceX96.toString()).pow(2).div(Q96.pow(2)).mul(decimalAdjustment).toString()),
-            fee,
-          });
-        } catch (e) {
-          console.error(`Error fetching ${token0Symbol}-${token1Symbol} price on Uniswap V3:`, e);
-        } finally {
-          await new Promise((resolve) => setTimeout(resolve, 100)); // Rate limit requests
-        }
-      }
-      return prices;
-    })
-  );
-
-  return results.filter((res) => res.status === "fulfilled").flatMap((res) => res.value.filter((v) => v !== null));
-};
-
-const fetchPancakeSwapV3Prices = async (): Promise<DexPrice[]> => {
-  const results = await Promise.allSettled(
-    Object.entries(PancakeSwapV3Pools).map(async ([chainIdStr, pools]) => {
-      const chainId = Number.parseInt(chainIdStr);
-      const provider = providers[chainId];
-
-      const prices = [];
-      for (const { token0Symbol, token0Address, token1Symbol, token1Address, poolAddress, fee } of pools) {
-        try {
-          const pool = new ethers.Contract(poolAddress, JSON.stringify(PancakeSwapAbi), provider);
-          const slot0 = await pool.slot0();
-          const sqrtPriceX96 = slot0.sqrtPriceX96;
-          const Q96 = new Big(2).pow(96);
-          let decimalAdjustment;
-          if (token0Symbol === "WETH" && token1Symbol === "USDC") {
-            decimalAdjustment = new Big(10).pow(-5);
-          } else {
-            decimalAdjustment = new Big(10).pow(TRADABLE_TOKENS[chainId][token0Symbol].decimals - TRADABLE_TOKENS[chainId][token1Symbol].decimals);
-          }
-          prices.push({
-            dex: "PancakeSwap V3",
-            baseSymbol: token0Symbol,
-            quoteSymbol: token1Symbol,
-            baseToken: token0Address,
-            quoteToken: token1Address,
-            price: Number.parseFloat(new Big(sqrtPriceX96.toString()).pow(2).div(Q96.pow(2)).mul(decimalAdjustment).toString()),
-            fee,
-          });
-        } catch (e) {
-          console.error(`Error fetching ${token0Symbol}-${token1Symbol} price on PancakeSwap V3:`, e);
-        } finally {
-          await new Promise((resolve) => setTimeout(resolve, 100)); // Rate limit requests
-        }
-      }
-      return prices;
-    })
-  );
-
-  return results.filter((res) => res.status === "fulfilled").flatMap((res) => res.value.filter((v) => v !== null));
-};
-
-const fetchDexPrices = async (): Promise<DexPrice[]> => {
-  const [uniswapV3Prices, pancakeswapV3Prices] = await Promise.all([fetchUniswapV3Prices(), fetchPancakeSwapV3Prices()]);
-  return [...uniswapV3Prices, ...pancakeswapV3Prices];
-};
 
 const calculateTwoTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
   const arbitragePaths: ArbitragePath[] = [];
@@ -172,7 +67,7 @@ const calculateTwoTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
     if (profit > threshold) {
       arbitragePaths.push({
         type: "Two Token",
-        path: `[${minPrice.dex}] Buy ${minPrice.baseSymbol} @ ${minPrice.price.toPrecision(2)} → [${maxPrice.dex}] Sell ${minPrice.quoteSymbol} @ ${maxPrice.price.toFixed(2)}`,
+        path: `[${minPrice.dex}] Buy ${minPrice.baseSymbol} @ ${minPrice.price.toPrecision(2)} → [${maxPrice.dex}] Sell ${minPrice.quoteSymbol} @ ${maxPrice.price.toPrecision(4)}`,
         profit,
       });
     }
@@ -192,11 +87,13 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
       graph[key] = [];
     }
     graph[key].push({
-      baseSymbol: price.baseSymbol,
-      baseToken: price.baseToken,
-      quoteSymbol: price.quoteSymbol,
-      quoteToken: price.quoteToken,
       dex: price.dex,
+      chainId: price.chainId,
+      baseSymbol: price.baseSymbol,
+      quoteSymbol: price.quoteSymbol,
+      baseToken: price.baseToken,
+      quoteToken: price.quoteToken,
+      poolAddress: price.poolAddress,
       price: price.price,
       fee: price.fee,
     });
@@ -207,11 +104,13 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
       graph[reverseKey] = [];
     }
     graph[reverseKey].push({
-      baseSymbol: price.quoteSymbol,
-      baseToken: price.quoteToken,
-      quoteSymbol: price.baseSymbol,
-      quoteToken: price.baseToken,
       dex: price.dex,
+      chainId: price.chainId,
+      baseSymbol: price.quoteSymbol,
+      quoteSymbol: price.baseSymbol,
+      baseToken: price.quoteToken,
+      quoteToken: price.baseToken,
+      poolAddress: price.poolAddress,
       price: 1 / price.price, // Inverse price
       fee: price.fee,
     });
@@ -245,7 +144,7 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
             if (profit > threshold) {
               arbitragePaths.push({
                 type: "Three Token",
-                path: `[${edgeAB.dex}] ${edgeAB.baseSymbol}/${edgeAB.quoteSymbol} @ ${priceAB.toFixed(2)} → [${edgeBC.dex}] ${edgeBC.baseSymbol}/${edgeBC.quoteSymbol} @ ${priceBC.toFixed(2)} → [${edgeCA.dex}] ${edgeCA.baseSymbol}/${edgeCA.quoteSymbol} @ ${priceCA.toFixed(2)}`,
+                path: `[${edgeAB.dex}] ${edgeAB.baseSymbol}/${edgeAB.quoteSymbol} @ ${priceAB.toPrecision(4)} → [${edgeBC.dex}] ${edgeBC.baseSymbol}/${edgeBC.quoteSymbol} @ ${priceBC.toPrecision(4)} → [${edgeCA.dex}] ${edgeCA.baseSymbol}/${edgeCA.quoteSymbol} @ ${priceCA.toPrecision(4)}`,
                 profit,
               });
             }

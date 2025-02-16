@@ -27,23 +27,23 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
           const reserves = await poolDataProvider.getAllReservesTokens();
           const stableReserves = reserves.filter((reserve: AaveReserve) => STABLECOIN_SYMBOLS.includes(reserve.symbol));
 
-          return Promise.all(
-            stableReserves.map(async (reserve: AaveReserve) => {
-              const data = await poolDataProvider.getReserveData(reserve.tokenAddress);
-              return {
-                platform: "Aave",
-                platformUrl: "https://app.aave.com/",
-                symbol: reserve.symbol,
-                rewardSymbol: reserve.symbol,
-                chainName: CHAINS[chainId] ?? `Chain ID: ${chainId}`,
-                chainId,
-                tokenAddress: reserve.tokenAddress,
-                contractAddress: poolDataProviderAddress,
-                tvl: reserve.symbol === "EURS" ? (data.totalAToken.toNumber() - data.totalVariableDebt.toNumber()) / 100 : Number.parseFloat(normalize(valueToZDBigNumber(data.totalAToken.toString()).minus(valueToZDBigNumber(data.totalVariableDebt.toString())), chainId != 56 && ["USDT", "USDC", "PYUSD"].includes(reserve.symbol) ? 6 : ETH_DECIMALS)) || 0,
-                apy: Number.parseFloat(normalize(rayPow(valueToZDBigNumber(data.liquidityRate.toString()).dividedBy(SECONDS_PER_YEAR).plus(RAY), SECONDS_PER_YEAR).minus(RAY), RAY_DECIMALS)) * 100,
-              };
-            })
-          );
+          const rates = [];
+          for (const reserve of stableReserves) {
+            const data = await poolDataProvider.getReserveData(reserve.tokenAddress);
+            rates.push({
+              platform: "Aave",
+              platformUrl: "https://app.aave.com/",
+              symbol: reserve.symbol,
+              rewardSymbol: reserve.symbol,
+              chainName: CHAINS[chainId] ?? `Chain ID: ${chainId}`,
+              chainId,
+              tokenAddress: reserve.tokenAddress,
+              contractAddress: poolDataProviderAddress,
+              tvl: reserve.symbol === "EURS" ? (data.totalAToken.toNumber() - data.totalVariableDebt.toNumber()) / 100 : Number.parseFloat(normalize(valueToZDBigNumber(data.totalAToken.toString()).minus(valueToZDBigNumber(data.totalVariableDebt.toString())), chainId != 56 && ["USDT", "USDC", "PYUSD"].includes(reserve.symbol) ? 6 : ETH_DECIMALS)) || 0,
+              apy: Number.parseFloat(normalize(rayPow(valueToZDBigNumber(data.liquidityRate.toString()).dividedBy(SECONDS_PER_YEAR).plus(RAY), SECONDS_PER_YEAR).minus(RAY), RAY_DECIMALS)) * 100,
+            });
+          }
+          return rates;
         } catch (e) {
           console.error(`Error fetching Aave data for chain ${chainId}:`, e);
           return [];
@@ -66,27 +66,26 @@ const fetchCompoundIIIYields = async (): Promise<InterestRate[]> => {
         const chainId = Number.parseInt(chainIdStr);
         const provider = providers[chainId];
 
-        return Promise.all(
-          Object.entries(compoundRewards).map(async (arg) => {
-            const [symbol, contractAddress] = arg;
-            const contract = new ethers.Contract(contractAddress, JSON.stringify(CompoundJson), provider);
-            const [totalSupply, totalBorrow, baseTokenPriceFeed, decimals, utilization, baseToken] = await Promise.all([contract.totalSupply(), contract.totalBorrow(), contract.baseTokenPriceFeed(), contract.decimals(), contract.getUtilization(), contract.baseToken()]);
-            const [price, supplyRate] = await Promise.all([contract.getPrice(baseTokenPriceFeed), contract.getSupplyRate(utilization)]);
+        const rates = [];
+        for (const [symbol, contractAddress] of Object.entries(compoundRewards)) {
+          const contract = new ethers.Contract(contractAddress, JSON.stringify(CompoundJson), provider);
+          const [totalSupply, totalBorrow, baseTokenPriceFeed, decimals, utilization, baseToken] = await Promise.all([contract.totalSupply(), contract.totalBorrow(), contract.baseTokenPriceFeed(), contract.decimals(), contract.getUtilization(), contract.baseToken()]);
+          const [price, supplyRate] = await Promise.all([contract.getPrice(baseTokenPriceFeed), contract.getSupplyRate(utilization)]);
 
-            return {
-              platform: "Compound III",
-              platformUrl: "https://app.compound.finance/",
-              symbol,
-              rewardSymbol: symbol,
-              chainName: CHAINS[chainId] || `Chain ID: ${chainId}`,
-              chainId: chainId,
-              contractAddress,
-              tokenAddress: baseToken,
-              tvl: (parseBigNumberWithDecimals(totalSupply, decimals) - parseBigNumberWithDecimals(totalBorrow, decimals)) * parseBigNumberWithDecimals(price, decimals),
-              apy: Number.parseFloat(normalize(valueToZDBigNumber(supplyRate.toString()).times(SECONDS_PER_YEAR), 18)) * 100,
-            };
-          })
-        );
+          rates.push({
+            platform: "Compound III",
+            platformUrl: "https://app.compound.finance/",
+            symbol,
+            rewardSymbol: symbol,
+            chainName: CHAINS[chainId] || `Chain ID: ${chainId}`,
+            chainId: chainId,
+            contractAddress,
+            tokenAddress: baseToken,
+            tvl: (parseBigNumberWithDecimals(totalSupply, decimals) - parseBigNumberWithDecimals(totalBorrow, decimals)) * parseBigNumberWithDecimals(price, decimals),
+            apy: Number.parseFloat(normalize(valueToZDBigNumber(supplyRate.toString()).times(SECONDS_PER_YEAR), 18)) * 100,
+          });
+        }
+        return rates;
       })
     );
 
