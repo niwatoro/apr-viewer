@@ -1,0 +1,1294 @@
+{
+  "1": [
+    {
+      "token0Symbol": "BNB",
+      "token0Address": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xf4630e119e84B13A2340B10B11CEeF631E5b6A2a",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "USDC",
+      "token0Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x3416cF6C708Da44DB2624D63ea0AAef7113527C6",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "USDC",
+      "token0Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x7858E59e0C01EA06Df3aF3D20aC7B0003275D4Bf",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "USDC",
+      "token0Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xEe4Cf3b78A74aFfa38C6a926282bCd8B5952818d",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "USDC",
+      "token0Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xbb256c2F1B677e27118b0345FD2b3894D2E6D487",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WBTC",
+      "token0Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xf98cf0D979CFBb780774F318e3dA4f7317aF50d7",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WBTC",
+      "token0Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x56534741CD8B152df6d48AdF7ac51f75169A83b2",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WBTC",
+      "token0Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x9Db9e0e53058C89e5B94e29621a205198648425B",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "LINK",
+      "token0Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xac5A2c404EbBa22a869998089AC7893ff4E1F0a7",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "wstETH",
+      "token0Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xeC5055067d60292Ab2c514A1090Bc8E014e4aBAA",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "SHIB",
+      "token0Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xB0cC75ed5AaBB0aCce7cbf0302531Bb260d259C4",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "TONCOIN",
+      "token0Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x7F76A06E8485bb5a12c0E2632DD5c365ECF3E6Da",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "TONCOIN",
+      "token0Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x6A9c4fC2B35EE398e7a0E75D982872466ba93cB8",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xc7bBeC68d12a0d1830360F8Ec58fA599bA1b0e9b",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x11b815efB8f581194ae79006d24E0d814B7697F6",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x4e68Ccd3E89f51C3074ca5072bbAC773960dFa36",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xC5aF84701f98Fa483eCe78aF83F11b6C38ACA71D",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "USDe",
+      "token0Address": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x435664008F38B0650fBC1C9fc971D0A3Bc2f1e47",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x36F7273afb18A3F2fDd07e3Ac1c28E65d7ea8f07",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x3470447f3CecfFAc709D3e783A307790b0208d60",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ONDO",
+      "token0Address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x7574CCdca138292D76Aa76e589f07bD88fc80c77",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ONDO",
+      "token0Address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x39F9ff86479579952E7218C27aB9D2A9FF9bfE3e",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x4D1Ad4A9e61Bc0E5529d64F38199cCFca56f5a42",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x48DA0965ab2d2cbf1C17C09cFB5Cbe67Ad5B1406",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x6f48ECa74B38d2936B02ab603FF4e36A6C0E3A77",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x4773E2C1c0B400a16DfeC4ca6E305141859a5542",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "POL",
+      "token0Address": "0x455e53CBB86018Ac2B8092FdCd39d8444aFFC3F6",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xb70AFB6CCfE5AE52b6a6bBF93AA4bbe69705aBc7",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ARB",
+      "token0Address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x54Bd913F4ea7359A2eedC8f5995e3E528A3D58D2",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "FDUSD",
+      "token0Address": "0xc5f0f7b66764F6ec8C8Dff7BA683102295E16409",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xCdFc3d54C8452B12285Abb8c102dF09Ce83B8334",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "FET",
+      "token0Address": "0xaea46A60368A7bD060eec7DF8CBa43b7EF41Ad85",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x4FF2fA176E96493d717EcDF414b1f82521382950",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xd296B77f1CAD3F0eC64Ae00cdbFa749E24b1f9cb",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x20215Cd3949eDf87771C529eD41F5D8Cce652F65",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x4185D2952eb74A28EF550a410BA9b8e210Ee9391",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "QNT",
+      "token0Address": "0x4a220e6096b25eadb88358cb44068a3248254675",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xde77450D0887994364b62a93e14A3a76D2Db9162",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "TUSD",
+      "token0Address": "0x0000000000085d4780b73119b644ae5ecd22b376",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x69ef438A28e6d123F809c9Be785C79745ab5A0b8",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "BNB",
+      "token1Address": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
+      "poolAddress": "0x881B8d0B1aD9d1b1DB918342B064D10aFb9eaa69",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "BNB",
+      "token1Address": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
+      "poolAddress": "0x9E7809C21BA130c1A51C112928eA6474D9a9Ae3C",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "stETH",
+      "token0Address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x6c83b0Feef04139EB5520b1cE0e78069C6E7e2c5",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WBTC",
+      "token0Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x9a772018FbD77fcD2d25657e5C547BAfF3Fd7D16",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WBTC",
+      "token0Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x99ac8cA7087fA4A2A1FB6357269965A2014ABc35",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "LINK",
+      "token0Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xFAD57d2039C21811C8F2B5D5B65308aa99D31559",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "wstETH",
+      "token0Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x4622Df6fB2d9Bee0DCDaCF545aCDB6a2b2f4f863",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "wstETH",
+      "token0Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x173821f6aD4c5324cd35753A9FD12D92f2eaAB29",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "SHIB",
+      "token0Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xe9131A276FD07AF729B5537A429346e8AfFc67e0",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "SHIB",
+      "token0Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xA15cc73E881c06D8DB06b50b7a3688B763C18350",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "TONCOIN",
+      "token0Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x2a48dBF6347Ea5Cdc906B4Bb6A2ed27969241cde",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xE0554a476A092703abdB3Ef35c80e0D76d32939F",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x7BeA39867e4169DBe237d55C8242a8f2fcDcc387",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "USDe",
+      "token0Address": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xE6D7EbB9f1a9519dc06D557e03C522d53520e76A",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xD0fC8bA7E267f2bc56044A7715A489d851dC6D78",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xE845469aAe04f8823202b011A848cf199420B4C1",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "NEAR",
+      "token0Address": "0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xee8AAa362a75fBF8e0A38A50ddC27f38551e16eA",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ONDO",
+      "token0Address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xA8e8C91fAA15149F5f6E4A37846DCd58B88b3EC7",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xdceaf5d0E5E0dB9596A47C0c4120654e80B1d706",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "MNT",
+      "token0Address": "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x8Fa9203374e4974A85BceBf7a830a64D5B9C6149",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x5777d92f208679DB4b9778590Fa3CAB3aC9e2168",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x6c6Bc977E13Df9b0de53b251522280BB72383700",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xa63b490aA077f541c9d64bFc1Cc0db2a752157b5",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x6958686b6348c3D6d5f2dCA3106A5C09C156873a",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x4548280AC92507C9092a511C7396Cbea78FA9E49",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "RNDR",
+      "token0Address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x6882d07E45CB8F9EED3C6cedf4288E1Ae0021b49",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "ARB",
+      "token0Address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x42eAC65B1cAa73e9D06584708ef2c0642b9AC559",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x78235D08B2aE7a3E00184329212a4d7AcD2F9985",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xfc545f345E2aFC52652cd6F76323C5Ddc847BD6d",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x408A625596f47314e1FD4a6cBCE84C4A8695bA3f",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "TUSD",
+      "token0Address": "0x0000000000085d4780b73119b644ae5ecd22b376",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x39529E96c28807655B5856b3d342c6225111770e",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "stETH",
+      "token1Address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "poolAddress": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LINK",
+      "token0Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x618004783d422DfB792D07D742549D5A24648dF2",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "TONCOIN",
+      "token0Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x5F0d8FC6057a959E79F7f79f8dBf12f29F9a9F34",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "TONCOIN",
+      "token0Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x913764Ac2565C56706fEeF598DcE2d84634c7b60",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0xe6ff8b9A37B0fab776134636D9981Aa778c4e718",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0xCBCdF9626bC03E24f779434178A73a0B4bad62eD",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x6Ab3bba2F41e7eAA262fa5A1A9b3932fA161526F",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x8F0CB37cdFF37E004E0088f563E5fe39E05CCC5B",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x98E45940d0c76898f5659b8FC78895F35A39eb43",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x391E8501b626C623d39474AfcA6f9e46c2686649",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x649Caaf37F36E67D1129C0FD6C6539d390Ca2B82",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0xe8f7c89C5eFa061e340f2d2F206EC78FD8f7e124",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x0da6253560822973185297d5f32fF8fA38243Afe",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "FET",
+      "token0Address": "0xaea46A60368A7bD060eec7DF8CBa43b7EF41Ad85",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0xD81B834138c4F8562947965D4010f0eEE07fcafD",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LBTC",
+      "token0Address": "0x8236a87084f8b84306f72007f36f2618a5634494",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x0b599ebf4E05af48b56D38E2DDe520570C366460",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "LBTC",
+      "token0Address": "0x8236a87084f8b84306f72007f36f2618a5634494",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x87428a53e14d24Ab19c6Ca4939B4df93B8996cA9",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "BBTC",
+      "token0Address": "0xf5e11df1ebcf78b6b6d26e04ff19cd786a1e81dc",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0xBD115Ce0f3e54F1667Dea19Fab667B1E9880e9CB",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "QNT",
+      "token0Address": "0x4a220e6096b25eadb88358cb44068a3248254675",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x83dd3f6D2ae0890190906822dB16AbA4720Ff701",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0x5d4F3C6fA16908609BAC31Ff148Bd002AA6b8c83",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0xa6Cc3C2531FdaA6Ae1A3CA84c2855806728693e8",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0x3A0f221eA8B150f3D3d27DE8928851aB5264bB65",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0x9f178e86E42DDF2379CB3D2AcF9Ed67A1eD2550a",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0xA6B9a13B34db2A00284299c47DACF49FB62C1755",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0x14243EA6bB3d64C8d54A1f47B077e23394D6528A",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0x091C0158ab410bd73ca1541409D5A22E90146a04",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "USDe",
+      "token0Address": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0xCF2c6Cf8Ab5ce937463244efCb893622f5B50799",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "weETH",
+      "token0Address": "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0xf47F04a8605bE181E525D6391233cbA1f7474182",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "SHIB",
+      "token1Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "poolAddress": "0x94E4b2E24523CF9B3e631A6943C346dF9687c723",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "SHIB",
+      "token1Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "poolAddress": "0x2F62f2B4c5fcd7570a709DeC05D68EA19c82A9ec",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "SHIB",
+      "token1Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "poolAddress": "0x5764a6F2212D502bC5970f9f129fFcd61e5D7563",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "SHIB",
+      "token1Address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "poolAddress": "0xE07C687CECB3cAF246deD3240D186181d5EAE705",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "TONCOIN",
+      "token1Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "poolAddress": "0xAF81e930620eb55A9a6927C4b2AFCb4d61040C32",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "TONCOIN",
+      "token1Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "poolAddress": "0x4b62Fa30Fea125e43780DC425C2BE5acb4BA743b",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "TONCOIN",
+      "token1Address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+      "poolAddress": "0x36652fDF0B2A16EA8eC7616DB29008648424980F",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LEO",
+      "token0Address": "0x2af5d2ad76741191d15dfe7bf6ac92d4bd912ca3",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x758A5F59b3EbE8a5cb9E6a09B5B876d2414042CD",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "OM",
+      "token0Address": "0x3593d125a4f7849a1b059e64f4517a86dd60c95d",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x8646047a7Ea7fef0836a81e797FFAb816c308C72",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "BGB",
+      "token0Address": "0x54D2252757e1672EEaD234D27B1270728fF90581",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xe6572124Df9D0b4fBf591BaDdE15d0C2E9c4173B",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xfaA318479b7755b2dBfDD34dC306cb28B420Ad12",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x1d42064Fc4Beb5F8aAF85F4617AE8b3b5B8Bd801",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "UNI",
+      "token0Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x360b9726186C0F62cc719450685ce70280774Dc8",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "weETH",
+      "token0Address": "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "weETH",
+      "token0Address": "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "weETH",
+      "token0Address": "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x6f5C74e2170cfD6F5B7829F4742Dc54CEC42eA07",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "NEAR",
+      "token0Address": "0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x9Ba3F47FE7f5a12562ba0A4A5645d8bf9ea1Dd8e",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "ONDO",
+      "token0Address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x7b1E5D984A43eE732de195628d20d05CFaBc3cC7",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ONDO",
+      "token0Address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xD0F292Fa6fe694892Bcf52B55ca0F3E277be17c0",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x4674abc5796e1334B5075326b39B748bee9EaA34",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x5aB53EE1d50eeF2C1DD3d5402789cd27bB52c1bB",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x1353fE67fFf8f376762b7034DC9066f0bE15a723",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "MNT",
+      "token0Address": "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xF4c5e0F4590b6679B3030d29A84857F226087FeF",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x60594a405d53811d3BC4766596EFD80fd545A270",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xC2e9F25Be6257c210d7Adf0D4Cd6E3E881ba25f8",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xa80964C5bBd1A0E95777094420555fead1A26c1e",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "OKB",
+      "token0Address": "0x75231f58b43240c9718dd58b4967c5114342a86c",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xf3d15274772F40f65673fd35C665dcF7d6c27E8f",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "POL",
+      "token0Address": "0x455e53CBB86018Ac2B8092FdCd39d8444aFFC3F6",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x88ada7b1dd1C728ea87404CEa7a0780139EB35d1",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "CRO",
+      "token0Address": "0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x87B1d1B59725209879CC5C5adEb99d8BC9EcCf12",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "RNDR",
+      "token0Address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x4628a0A564DEBFc8798eb55DB5c91f2200486c24",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "RNDR",
+      "token0Address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xE936f0073549AD8b1fA53583600d629Ba9375161",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "ARB",
+      "token0Address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x59354356Ec5d56306791873f567d61EBf11dfbD5",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ARB",
+      "token0Address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x755E5A186F0469583bd2e80d1216E02aB88Ec6ca",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "FET",
+      "token0Address": "0xaea46A60368A7bD060eec7DF8CBa43b7EF41Ad85",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x744159757caC173A7A3eCf5e97ADB10d1a725377",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "FET",
+      "token0Address": "0xaea46A60368A7bD060eec7DF8CBa43b7EF41Ad85",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x948b54A93f5aD1df6B8bFF6Dc249D99CA2EcA052",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xa3f558aebAecAf0e11cA4b2199cC5Ed341edfd74",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xf4aD61dB72f114Be877E87d62DC5e7bd52DF4d9B",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "INJ",
+      "token0Address": "0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x6c063a6E8Cd45869b5Eb75291E65a3de298f3AA8",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xAe4045ffeDdF61D570E6d1fE2D71DED1A2E85a88",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xc3Db44ADC1fCdFd5671f555236eae49f4A8EEa18",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "ENA",
+      "token0Address": "0x57e114B691Db790C35207b2e685D4A43181e6061",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x08B8cebfcA0f49A9303bab1cC4e2C25D280f2c00",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "KCS",
+      "token0Address": "0xf34960d9d60be18cc1d5afc1a6f012a723a28811",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xB26a868fFA4Cbba926970D7ae9c6a36D088eE38C",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "KCS",
+      "token0Address": "0xf34960d9d60be18cc1d5afc1a6f012a723a28811",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x0df407bc6Abe9aF2093dCB4c974e18d40A6A381a",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "IMX",
+      "token0Address": "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x81fbBc40Cf075FD7De6AfCe1bc72EDA1BB0e13aa",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "IMX",
+      "token0Address": "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xFd76bE67FFF3BAC84E3D5444167bbC018f5968b6",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "THETA",
+      "token0Address": "0x3883f5e181fccaf8410fa61e12b59bad963fb645",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x94CeE1CA0770c2E66a5D4FC5c5E4f9ABa1532CE6",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "QNT",
+      "token0Address": "0x4a220e6096b25eadb88358cb44068a3248254675",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x24EE2c6B9597F035088CDa8575E9D5e15a84B9DF",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "QNT",
+      "token0Address": "0x4a220e6096b25eadb88358cb44068a3248254675",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xe310D7acDB331AF81904E747D6ec005de0Ac1162",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "MOVE",
+      "token0Address": "0x3073f7aaa4db83f95e9fff17424f71d4751a3073",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xAD1975818684E19bB61aD5C928d2aC8F7d992b47",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "MOVE",
+      "token0Address": "0x3073f7aaa4db83f95e9fff17424f71d4751a3073",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xA04d13F092f68F603A193832222898B0d9f52c71",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "TUSD",
+      "token0Address": "0x0000000000085d4780b73119b644ae5ecd22b376",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x714b8443D0ADA18eCE1fcE5702567e313bfa8f29",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDS",
+      "token1Address": "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+      "poolAddress": "0xe9F1E2EF814f5686C30ce6fb7103d0F780836C67",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "AAVE",
+      "token0Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1Symbol": "UNI",
+      "token1Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "poolAddress": "0x59c38b6775Ded821f010DbD30eCabdCF84E04756",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "UNI",
+      "token1Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "poolAddress": "0x57D7d040438730d4029794799dEEd8601E23fF80",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "UNI",
+      "token1Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "poolAddress": "0x7cf70eD6213F08b70316bD80F7c2ddDc94E41aC5",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "UNI",
+      "token1Address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "poolAddress": "0xD6993E525FAdB23971a20bBb057Af9841eAE076F",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "stkAAVE",
+      "token0Address": "0x4da27a545c0c5b758a6ba100e3a049001de870f5",
+      "token1Symbol": "AAVE",
+      "token1Address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "poolAddress": "0x1a76F6B9B3d9C532E0B56990944A31A705933fbD",
+      "fee": 3000
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "DAI",
+      "token1Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "poolAddress": "0xbBa38B5Bdd5A04AB5A9F52db87e64efc299B6bD5",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "QNT",
+      "token0Address": "0x4a220e6096b25eadb88358cb44068a3248254675",
+      "token1Symbol": "DAI",
+      "token1Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "poolAddress": "0x07E43b28640e30a60bFfcC885f2D7ae5fb6251c2",
+      "fee": 10000
+    },
+    {
+      "token0Symbol": "LBTC",
+      "token0Address": "0x8236a87084f8b84306f72007f36f2618a5634494",
+      "token1Symbol": "cbBTC",
+      "token1Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "poolAddress": "0xD4F56e41E77e2594E89473C7ec03f3F8f6Ed315B",
+      "fee": 500
+    }
+  ],
+  "10": [],
+  "56": [],
+  "137": [],
+  "324": [],
+  "8453": [],
+  "42161": [],
+  "42220": [],
+  "43114": [],
+  "81457": [],
+  "7777777": []
+}

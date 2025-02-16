@@ -1,0 +1,132 @@
+{
+  "1": [
+    {
+      "token0Symbol": "USDC",
+      "token0Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x04c8577958CcC170EB3d2CCa76F9d51bc6E42D8f",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0xaCDb27b266142223e1e676841C1E809255Fc6d07",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x6CA298D2983aB03Aa1dA7679389D955A4eFEE15C",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "USDe",
+      "token0Address": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x027039bd4eA6Ac7f80fEf4be2d0C6B74bfA932F9",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "TUSD",
+      "token0Address": "0x0000000000085d4780b73119b644ae5ecd22b376",
+      "token1Symbol": "USDT",
+      "token1Address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "poolAddress": "0x6C2348DEeC1508724C0207a84d21cC5EE88231C8",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x1445F32D1A74872bA41f3D8cF4022E9996120b31",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x1ac1A8FEaAEa1900C4166dEeed0C11cC10669D36",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "DAI",
+      "token0Address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0xD9e497BD8f491fE163b42A62c296FB54CaEA74B7",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "USDC",
+      "token1Address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "poolAddress": "0x5fbbC3380DD9f7253Aa10838DD641dAc8242F817",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x9b5699D18DFF51fc65fB8ad6F70d93287C36349f",
+      "fee": 2500
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "WBTC",
+      "token1Address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "poolAddress": "0x3E253Ae716eBf5047d6deeE8f2607121ceA08482",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "LINK",
+      "token1Address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "poolAddress": "0x7ca3EdB2c8fb3e657E282e67F4008d658aA161D2",
+      "fee": 2500
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0x3a1b97Fc25fA45832F588ED3bFb2A0f74ddBD4F8",
+      "fee": 100
+    },
+    {
+      "token0Symbol": "WETH",
+      "token0Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1Symbol": "wstETH",
+      "token1Address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "poolAddress": "0x4F64951A6583D56004fF6310834C70d182142A07",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "cbBTC",
+      "token0Address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0xF84AAd7ab687b1BB1FBB190344240b60B39e5b79",
+      "fee": 500
+    },
+    {
+      "token0Symbol": "LDO",
+      "token0Address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1Symbol": "WETH",
+      "token1Address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "poolAddress": "0x34b8AB3a392d54D839dcDBd5Cd1330aBB24bE167",
+      "fee": 2500
+    }
+  ]
+}

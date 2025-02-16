@@ -38,10 +38,8 @@ export default function Home() {
         error={error}
         headers={[
           { sortColumn: "type", title: "Type" },
+          { sortColumn: "profit", title: "Profit (%)" },
           { sortColumn: "path", title: "Path" },
-          { sortColumn: "profit", title: "Profit" },
-          { sortColumn: "volume", title: "Volume" },
-          { sortColumn: "dexs", title: "DEXs" },
         ]}
         data={arbitragePaths}
         initialSortColumn={"profit"}
@@ -49,10 +47,8 @@ export default function Home() {
           return (
             <>
               <TableCell>{row.type}</TableCell>
+              <TableCell className={"text-right"}>{row.profit.toFixed(2)}</TableCell>
               <TableCell>{row.path}</TableCell>
-              <TableCell>{row.profit}</TableCell>
-              <TableCell>{row.volume}</TableCell>
-              <TableCell>{row.dexs}</TableCell>
             </>
           );
         }}

@@ -27,7 +27,7 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
           const reserves = await poolDataProvider.getAllReservesTokens();
           const stableReserves = reserves.filter((reserve: AaveReserve) => STABLECOIN_SYMBOLS.includes(reserve.symbol));
 
-          const reserveData = await Promise.all(
+          return Promise.all(
             stableReserves.map(async (reserve: AaveReserve) => {
               const data = await poolDataProvider.getReserveData(reserve.tokenAddress);
               return {
@@ -44,8 +44,6 @@ const fetchAaveYields = async (): Promise<InterestRate[]> => {
               };
             })
           );
-
-          return reserveData;
         } catch (e) {
           console.error(`Error fetching Aave data for chain ${chainId}:`, e);
           return [];
@@ -124,7 +122,7 @@ const fetchSkyYields = async (): Promise<InterestRate[]> => {
         contractAddress,
         tvl: parseBigNumberWithDecimals(totalAssets, decimals),
         apy: Number.parseFloat(normalize(rayPow(valueToZDBigNumber(ssr.toString()), SECONDS_PER_YEAR).minus(RAY), RAY_DECIMALS)) * 100,
-        verified: TRADABLE_TOKENS?.[chainId]?.[symbol]?.toLowerCase() === asset?.toLowerCase(),
+        verified: TRADABLE_TOKENS?.[chainId]?.[symbol]?.address.toLowerCase() === asset?.toLowerCase(),
       },
     ];
   } catch (e) {
