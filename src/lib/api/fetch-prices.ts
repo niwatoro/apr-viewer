@@ -33,8 +33,8 @@ const fetchUniswapV3Prices = async (): Promise<DexPrice[]> => {
 
           const L = Big(liquidity.toString());
 
-          const tradableAmountToken0 = L.times(S.minus(SLimitToken0)).div(S.times(SLimitToken0));
-          const tradableAmountToken1 = L.times(SLimitToken1.minus(S));
+          const tradableAmountBaseToken = L.times(S.minus(SLimitToken0)).div(S.times(SLimitToken0));
+          const tradableAmountQuoteToken = L.times(SLimitToken1.minus(S));
 
           prices.push({
             dex: "Uniswap V3",
@@ -46,8 +46,8 @@ const fetchUniswapV3Prices = async (): Promise<DexPrice[]> => {
             quoteToken: token1Address,
             price: Number.parseFloat(S.pow(2).mul(decimalAdjustment).toString()),
             fee,
-            tradableAmountToken0: Number.parseFloat(tradableAmountToken0.div(Big(10).pow(TRADABLE_TOKENS[chainId][token0Symbol].decimals)).toString()),
-            tradableAmountToken1: Number.parseFloat(tradableAmountToken1.div(Big(10).pow(TRADABLE_TOKENS[chainId][token1Symbol].decimals)).toString()),
+            tradableAmountBaseToken: Number.parseFloat(tradableAmountBaseToken.div(Big(10).pow(TRADABLE_TOKENS[chainId][token0Symbol].decimals)).toString()),
+            tradableAmountQuoteToken: Number.parseFloat(tradableAmountQuoteToken.div(Big(10).pow(TRADABLE_TOKENS[chainId][token1Symbol].decimals)).toString()),
           });
         } catch (e) {
           console.error(`Error fetching ${token0Symbol}-${token1Symbol} price on Uniswap V3:`, e);
@@ -82,8 +82,8 @@ const fetchPancakeSwapV3Prices = async (): Promise<DexPrice[]> => {
 
           const L = Big(liquidity.toString());
 
-          const tradableAmountToken0 = L.times(S.minus(SLimitToken0)).div(S.times(SLimitToken0));
-          const tradableAmountToken1 = L.times(SLimitToken1.minus(S));
+          const tradableAmountBaseToken = L.times(S.minus(SLimitToken0)).div(S.times(SLimitToken0));
+          const tradableAmountQuoteToken = L.times(SLimitToken1.minus(S));
 
           prices.push({
             dex: "PancakeSwap V3",
@@ -95,8 +95,8 @@ const fetchPancakeSwapV3Prices = async (): Promise<DexPrice[]> => {
             quoteToken: token1Address,
             price: Number.parseFloat(S.pow(2).mul(decimalAdjustment).toString()),
             fee,
-            tradableAmountToken0: Number.parseFloat(tradableAmountToken0.div(Big(10).pow(TRADABLE_TOKENS[chainId][token0Symbol].decimals)).toString()),
-            tradableAmountToken1: Number.parseFloat(tradableAmountToken1.div(Big(10).pow(TRADABLE_TOKENS[chainId][token1Symbol].decimals)).toString()),
+            tradableAmountBaseToken: Number.parseFloat(tradableAmountBaseToken.div(Big(10).pow(TRADABLE_TOKENS[chainId][token0Symbol].decimals)).toString()),
+            tradableAmountQuoteToken: Number.parseFloat(tradableAmountQuoteToken.div(Big(10).pow(TRADABLE_TOKENS[chainId][token1Symbol].decimals)).toString()),
           });
         } catch (e) {
           console.error(`Error fetching ${token0Symbol}-${token1Symbol} price on PancakeSwap V3:`, e);

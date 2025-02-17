@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { ArrowUpDown } from "lucide-react";
 import { ReactNode, useState } from "react";
 
 type Props = {
@@ -47,7 +46,7 @@ export const MyTable = ({ isLoading, error, headers, data, initialSortColumn, in
           {headers.map((header) => (
             <TableHead key={header.title}>
               <Button variant="ghost" onClick={() => handleSort(header.sortColumn)}>
-                {header.title} <ArrowUpDown />
+                {header.title}
               </Button>
             </TableHead>
           ))}

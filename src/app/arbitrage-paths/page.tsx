@@ -3,6 +3,7 @@
 import { Header } from "@/components/header";
 import { MyTable } from "@/components/my-table";
 import { TableCell } from "@/components/ui/table";
+import { formatNumber } from "@/lib/utils";
 import { type ArbitragePath } from "@/types/arbitrage-path";
 import { useEffect, useRef, useState } from "react";
 
@@ -42,7 +43,7 @@ export default function Home() {
         error={error}
         headers={[
           { sortColumn: "type", title: "Type" },
-          { sortColumn: "profit", title: "Profit (%)" },
+          { sortColumn: "profit", title: "Profit ($0)" },
           { sortColumn: "path", title: "Path" },
         ]}
         data={arbitragePaths}
@@ -51,7 +52,7 @@ export default function Home() {
           return (
             <>
               <TableCell>{row.type}</TableCell>
-              <TableCell className={"text-right"}>{row.profit.toFixed(2)}</TableCell>
+              <TableCell className={"text-right"}>{formatNumber(row.profit)}</TableCell>
               <TableCell>{row.path}</TableCell>
             </>
           );

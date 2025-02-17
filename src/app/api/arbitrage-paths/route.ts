@@ -60,22 +60,46 @@ const calculateTwoTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
       }
     });
 
-    // For a two-token arbitrage, assume starting with quote tokens:
-    // 1. Buy base tokens at the lower price (adjusted for fee).
-    // 2. Sell base tokens at the higher price (adjusted for fee).
-    // The effective conversion factors become:
-    const effectiveBuy = feeMultiplier(minPrice.fee) / minPrice.price;
-    const effectiveSell = feeMultiplier(maxPrice.fee) * maxPrice.price;
-    const multiplier = effectiveBuy * effectiveSell;
-    const profit = (multiplier - 1) * 100; // Profit percentage
+    // --- Calculate maximum trade amounts for each leg ---
+    // For the buy leg (minPrice dex), we are spending quote tokens to receive base tokens.
+    // The maximum quote amount allowed is limited by two factors:
+    // 1. The pool's quote token limit.
+    // 2. The base token limit converted to quote terms.
+    const buyLimitFromQuote = minPrice.tradableAmountQuoteToken;
+    const buyLimitFromBase = (minPrice.tradableAmountBaseToken * minPrice.price) / feeMultiplier(minPrice.fee);
+    const QBuyMax = Math.min(buyLimitFromQuote, buyLimitFromBase);
 
-    // A threshold can be used to filter out low profit opportunities (1% in this case).
-    const threshold = 1;
-    if (profit > threshold) {
+    // For the sell leg (maxPrice dex), we are selling base tokens for quote tokens.
+    // The maximum base tokens we can sell is limited by:
+    // 1. The pool's base token limit.
+    // 2. The quote token limit converted to base terms.
+    const sellLimitFromBase = maxPrice.tradableAmountBaseToken;
+    const sellLimitFromQuote = maxPrice.tradableAmountQuoteToken / (feeMultiplier(maxPrice.fee) * maxPrice.price);
+    const XSellMax = Math.min(sellLimitFromBase, sellLimitFromQuote);
+
+    // In the buy leg, if you spend Q quote tokens, you get:
+    // baseBought = Q * feeMultiplier(minPrice.fee) / minPrice.price.
+    // To ensure that baseBought does not exceed XSellMax:
+    // Q must be <= XSellMax * minPrice.price / feeMultiplier(minPrice.fee)
+    const QLimitForSell = (XSellMax * minPrice.price) / feeMultiplier(minPrice.fee);
+
+    // The maximum quote tokens we can use is then:
+    const QMaxPossible = Math.min(QBuyMax, QLimitForSell);
+
+    // If no trade is possible, skip.
+    if (QMaxPossible <= 0) return;
+
+    const baseBought = (QMaxPossible * feeMultiplier(minPrice.fee)) / minPrice.price;
+    const quoteReceived = baseBought * feeMultiplier(maxPrice.fee) * maxPrice.price;
+    const profitAmount = quoteReceived - QMaxPossible;
+
+    // We require the effective multiplier to be >1.01 (i.e. >1% profit) for the opportunity.
+    const effectiveMultiplier = quoteReceived / QMaxPossible;
+    if (effectiveMultiplier > 1.01 && profitAmount > 0) {
       arbitragePaths.push({
         type: "Two Token",
-        path: `[${minPrice.dex}] Buy ${minPrice.baseSymbol} @ ${minPrice.price.toPrecision(2)} → [${maxPrice.dex}] Sell ${minPrice.quoteSymbol} @ ${maxPrice.price.toPrecision(4)}`,
-        profit,
+        path: `[${minPrice.dex}] ${minPrice.baseSymbol}/${minPrice.quoteSymbol} @ ${minPrice.price.toPrecision(4)} → [${maxPrice.dex}] ${maxPrice.baseSymbol}/${maxPrice.quoteSymbol} @ ${maxPrice.price.toPrecision(4)}`,
+        profit: profitAmount,
       });
     }
   });
@@ -86,7 +110,7 @@ const calculateTwoTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
 const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
   const arbitragePaths: ArbitragePath[] = [];
 
-  // Step 1: Build a graph of token prices
+  // Build a graph of token prices
   const graph: { [key: string]: DexPrice[] } = {};
   prices.forEach((price) => {
     const key = price.baseToken;
@@ -101,6 +125,8 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
       baseToken: price.baseToken,
       quoteToken: price.quoteToken,
       poolAddress: price.poolAddress,
+      tradableAmountBaseToken: price.tradableAmountBaseToken,
+      tradableAmountQuoteToken: price.tradableAmountQuoteToken,
       price: price.price,
       fee: price.fee,
     });
@@ -118,12 +144,18 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
       baseToken: price.quoteToken,
       quoteToken: price.baseToken,
       poolAddress: price.poolAddress,
+      tradableAmountBaseToken: price.tradableAmountQuoteToken,
+      tradableAmountQuoteToken: price.tradableAmountBaseToken,
       price: 1 / price.price, // Inverse price
       fee: price.fee,
     });
   });
 
-  // Step 2: Find all triangular cycles (A → B → C → A)
+  // Helper to compute the maximum input allowed for an edge.
+  const getEdgeLimit = (edge: DexPrice): number => {
+    return Math.min(edge.tradableAmountBaseToken, edge.tradableAmountQuoteToken / (feeMultiplier(edge.fee) * edge.price));
+  };
+
   const tokens = Object.keys(graph);
   for (const tokenA of tokens) {
     for (const edgeAB of graph[tokenA]) {
@@ -137,23 +169,34 @@ const calculateThreeTokenArbitrage = (prices: DexPrice[]): ArbitragePath[] => {
         for (const edgeCA of graph[tokenC]) {
           if (edgeCA.quoteToken === tokenA) {
             // Found a cycle: A → B → C → A
-            const priceAB = edgeAB.price;
-            const priceBC = edgeBC.price;
-            const priceCA = edgeCA.price;
+            const LAB = getEdgeLimit(edgeAB);
+            const LBC = getEdgeLimit(edgeBC);
+            const LCA = getEdgeLimit(edgeCA);
 
-            // Adjust each leg's conversion for fees
-            const effectiveAB = priceAB * feeMultiplier(edgeAB.fee);
-            const effectiveBC = priceBC * feeMultiplier(edgeBC.fee);
-            const effectiveCA = priceCA * feeMultiplier(edgeCA.fee);
-            const effectiveRate = effectiveAB * effectiveBC * effectiveCA;
+            // Let X be the amount of token A we start with
+            // For edgeAB (A→B): we require X <= LAB
+            // The output from edgeAB will be:
+            //   Y = X * feeMultiplier(edgeAB.fee) * edgeAB.price.
+            // For edgeBC (B→C): require Y <= LBC  =>  X <= LBC / (feeMultiplier(edgeAB.fee) * edgeAB.price)
+            // The output from edgeBC will be:
+            //   Z = Y * feeMultiplier(edgeBC.fee) * edgeBC.price
+            // For edgeCA (C→A): require Z <= LCA  =>
+            //   X <= LCA / (feeMultiplier(edgeAB.fee) * edgeAB.price * feeMultiplier(edgeBC.fee) * edgeBC.price)
+            const XMax = Math.min(LAB, LBC / (feeMultiplier(edgeAB.fee) * edgeAB.price), LCA / (feeMultiplier(edgeAB.fee) * edgeAB.price * feeMultiplier(edgeBC.fee) * edgeBC.price));
 
-            const profit = (effectiveRate - 1) * 100; // Profit percentage
-            const threshold = 1; // 1% threshold for arbitrage opportunity
-            if (profit > threshold) {
+            if (XMax <= 0) continue;
+
+            // Final amount after completing the cycle:
+            const finalAmount = XMax * feeMultiplier(edgeAB.fee) * edgeAB.price * feeMultiplier(edgeBC.fee) * edgeBC.price * feeMultiplier(edgeCA.fee) * edgeCA.price;
+
+            const profitAmount = finalAmount - XMax;
+            const effectiveMultiplier = finalAmount / XMax;
+
+            if (effectiveMultiplier > 1.01 && profitAmount > 0) {
               arbitragePaths.push({
                 type: "Three Token",
-                path: `[${edgeAB.dex}] ${edgeAB.baseSymbol}/${edgeAB.quoteSymbol} @ ${priceAB.toPrecision(4)} → [${edgeBC.dex}] ${edgeBC.baseSymbol}/${edgeBC.quoteSymbol} @ ${priceBC.toPrecision(4)} → [${edgeCA.dex}] ${edgeCA.baseSymbol}/${edgeCA.quoteSymbol} @ ${priceCA.toPrecision(4)}`,
-                profit,
+                path: `[${edgeAB.dex}] ${edgeAB.baseSymbol}/${edgeAB.quoteSymbol} @ ${edgeAB.price.toPrecision(4)} → [${edgeBC.dex}] ${edgeBC.baseSymbol}/${edgeBC.quoteSymbol} @ ${edgeBC.price.toPrecision(4)} → [${edgeCA.dex}] ${edgeCA.baseSymbol}/${edgeCA.quoteSymbol} @ ${edgeCA.price.toPrecision(4)}`,
+                profit: profitAmount,
               });
             }
           }

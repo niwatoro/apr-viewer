@@ -62,11 +62,11 @@ export default function Home() {
             title: "Price ($)",
           },
           {
-            sortColumn: "tradableAmountToken0",
+            sortColumn: "tradableAmountBaseToken",
             title: "Tradable ($0)",
           },
           {
-            sortColumn: "tradableAmountToken1",
+            sortColumn: "tradableAmountQuoteToken",
             title: "Tradable ($1)",
           },
         ]}
@@ -94,8 +94,8 @@ export default function Home() {
                   })
                 : price.price.toPrecision(4)}
             </TableCell>
-            <TableCell className={"text-right"}>{formatNumber(price.tradableAmountToken0)}</TableCell>
-            <TableCell className={"text-right"}>{formatNumber(price.tradableAmountToken1)}</TableCell>
+            <TableCell className={"text-right"}>{formatNumber(price.tradableAmountBaseToken)}</TableCell>
+            <TableCell className={"text-right"}>{formatNumber(price.tradableAmountQuoteToken)}</TableCell>
           </>
         )}
       />
