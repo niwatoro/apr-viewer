@@ -32,7 +32,7 @@ export default function RootLayout({
           <SidebarProvider className={"flex gap-6"}>
             <AppSidebar />
             <main className={"w-full flex justify-center"}>
-              <div className={"max-w-2xl w-full mx-auto py-10"}>{children}</div>
+              <div className={"max-w-3xl w-full mx-auto py-10"}>{children}</div>
             </main>
           </SidebarProvider>
         </ThemeProvider>

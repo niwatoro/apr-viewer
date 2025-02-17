@@ -8,14 +8,18 @@ import { getExplorerContractUrl, getExplorerTokenUrl } from "@/lib/explorer";
 import { formatNumber } from "@/lib/utils";
 import type { InterestRate } from "@/types/interest-rate";
 import { BadgeCheck } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [interestRates, setInterestRates] = useState<InterestRate[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     async function fetchInterestRates() {
       try {
         const response = await fetch("/api/interest-rates");

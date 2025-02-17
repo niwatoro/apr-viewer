@@ -8,4 +8,6 @@ export type DexPrice = {
   quoteToken: string;
   price: number;
   fee: number;
+  tradableAmountToken0: number;
+  tradableAmountToken1: number;
 };

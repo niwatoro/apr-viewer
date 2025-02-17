@@ -47,7 +47,7 @@ export const MyTable = ({ isLoading, error, headers, data, initialSortColumn, in
           {headers.map((header) => (
             <TableHead key={header.title}>
               <Button variant="ghost" onClick={() => handleSort(header.sortColumn)}>
-                {header.title} <ArrowUpDown className="ml-2 h-4 w-4" />
+                {header.title} <ArrowUpDown />
               </Button>
             </TableHead>
           ))}

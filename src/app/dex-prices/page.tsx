@@ -6,15 +6,20 @@ import { MyTable } from "@/components/my-table";
 import { TableCell } from "@/components/ui/table";
 import { CHAINS } from "@/lib/constants";
 import { getExplorerContractUrl, getExplorerTokenUrl } from "@/lib/explorer";
+import { formatNumber } from "@/lib/utils";
 import type { DexPrice } from "@/types/dex-price";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [dexPrices, setDexPrices] = useState<DexPrice[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     async function fetchDexPrices() {
       try {
         const response = await fetch("/api/dex-prices");
@@ -57,8 +62,12 @@ export default function Home() {
             title: "Price ($)",
           },
           {
-            sortColumn: "fee",
-            title: "Fee (100th of bp)",
+            sortColumn: "tradableAmountToken0",
+            title: "Tradable ($0)",
+          },
+          {
+            sortColumn: "tradableAmountToken1",
+            title: "Tradable ($1)",
           },
         ]}
         data={dexPrices.map((price) => ({
@@ -77,8 +86,16 @@ export default function Home() {
               <ExternalLink href={getExplorerContractUrl(price.chainId, price.poolAddress)}>{price.dex}</ExternalLink>
             </TableCell>
             <TableCell>{CHAINS[price.chainId]}</TableCell>
-            <TableCell className={"text-right"}>{price.price.toPrecision(4)}</TableCell>
-            <TableCell className={"text-right"}>{price.fee}</TableCell>
+            <TableCell className={"text-right"}>
+              {price.price >= 1000
+                ? price.price.toLocaleString(undefined, {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })
+                : price.price.toPrecision(4)}
+            </TableCell>
+            <TableCell className={"text-right"}>{formatNumber(price.tradableAmountToken0)}</TableCell>
+            <TableCell className={"text-right"}>{formatNumber(price.tradableAmountToken1)}</TableCell>
           </>
         )}
       />
